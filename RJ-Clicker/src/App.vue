@@ -18,7 +18,7 @@ function increaseAddSize(){
 if(score.value >= hamonUpdateCost.value){
   score.value -= hamonUpdateCost.value;
   addSize.value++;
-  hamonUpdateCost.value = parseInt(hamonUpdateCost.value * 1,75);
+  hamonUpdateCost.value = parseInt(hamonUpdateCost.value * 1.75);
 }
 }
 
