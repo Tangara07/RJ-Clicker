@@ -44,7 +44,6 @@ function increasePerSecond(){
 </script>
 
 <template>
-  <v-app>
 <div id="app" v-cloak>
   <div class="stats">
     <span class="clicks">Total Damage: {{ score }}</span>
@@ -63,7 +62,6 @@ function increasePerSecond(){
   </div>
 
 </div> 
-</v-app>
  
 </template>
 <style>
@@ -84,17 +82,12 @@ body{
   height: 100%;
 }
 
-.v-application{
-  font-family: 'SF_Fedora';
-  font-size: 12px;
-}
-
 @font-face {
   font-family: 'SF_Fedora';
   src: url('./assets/fonts/SF_Fedora.ttf');
 }
 
 #app{
-  
+  font-family: SF_Fedora;
 }
 </style>
