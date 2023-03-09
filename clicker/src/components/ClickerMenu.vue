@@ -1,5 +1,6 @@
 <script setup>
 import {ref} from "vue";
+
 let score = ref(0);
 let addSize = ref(1);
 let perSecond = ref(0);
@@ -9,8 +10,11 @@ let arrowUpdateCost = ref(20);
 let bossHp = ref(100);
 let deathCount = ref(0);
 let interval = null;
+let bossCount = ref(1);
 
-
+let rubick = ref("../assets/pics/rubick.png");
+let marton = ref("../assets/pics/matron.png");
+let robi = ref("../assets/pics/robi.png"); 
 
 function addToScore(){
   score.value += addSize.value;
@@ -54,6 +58,11 @@ if (bossHp.value <= 0){
   score.value += 500;
   bossHp.value = 100 * deathCount.value;
 
+  bossCount.value++;
+
+  if(bossCount.value > 3){
+    bossCount.value = 1;
+  }
 }
 }
 
@@ -65,43 +74,64 @@ function bossKillTime(){
 
     score.value += 500;
     bossHp.value = 100 * deathCount.value;
+
+    bossCount.value++;
+
+    if(bossCount.value > 3){
+    bossCount.value = 1;
+    }
   }
+}
+
+function bossSummon(){
+
+  let image = ref("../assets/pics/rubick.png");
+
+  if (bossCount.value == 1){
+    image.value = rubick.value;
+  }
+  else if (bossCount.value == 2){
+    image.value = marton.value;
+  }
+  else if (bossCount.value == 3){
+    image.value = robi.value;
+  }
+
+  return image;
 }
 
 </script>
 
 <template>
   <v-app >
-    
       <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined">
         <v-row>
-
           <v-col>
-            <span class="clicks">Total Points: {{ score }}</span>
+            <span class="clicks">Total Points: <v-col>{{ score }}</v-col></span>
           </v-col>
 
           <v-spacer></v-spacer>
 
           <v-col>
-            <span class="perSecond">Damage per Second: {{ perSecond}}</span>
+            <span class="perSecond">Damage per Second: <v-col>{{ perSecond}}</v-col></span>
           </v-col>
 
           <v-spacer></v-spacer>
 
           <v-col>
-            <span class="clicks">Boss HP {{ bossHp }}</span>
+            <span class="clicks">Boss HP <v-col>{{ bossHp }}</v-col></span>
           </v-col>
           
           <v-spacer></v-spacer>
 
           <v-col>
-            <span class="clicks">Boss killed {{ deathCount }} times</span>
+            <span class="clicks">Boss killed <v-col>{{ deathCount }}</v-col> times</span>
           </v-col>
 
           <v-col>
             <v-avatar size="200" rounded="0">
               <v-img 
-                src="../assets/pics/rubick.png"
+                :src= "bossSummon()"
                 alt="BOSS">
               </v-img>
             </v-avatar>
@@ -147,11 +177,15 @@ function bossKillTime(){
           <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
         </v-col>
       </v-row> 
-    </v-card>
+    </v-card> 
   </v-app>
   </template>
 
 <style>
+
+.v-card{
+  padding: 2%;
+}
 
 body{
   /*padding-top: 25%;*/

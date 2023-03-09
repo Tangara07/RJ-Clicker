@@ -1,19 +1,19 @@
 <template>
   <v-app >
     <v-main>
-      <HelloWorld/>
+        <ClickerMenu/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ClickerMenu from './components/ClickerMenu.vue'
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    ClickerMenu,
   },
 
   data: () => ({
@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style>
+
 body{
   background: url('./assets/pics/morio.jpg')no-repeat center center fixed !important; 
   background-size: cover !important;
