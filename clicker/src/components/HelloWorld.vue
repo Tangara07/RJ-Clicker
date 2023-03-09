@@ -10,6 +10,8 @@ let bossHp = ref(100);
 let deathCount = ref(0);
 let interval = null;
 
+
+
 function addToScore(){
   score.value += addSize.value;
   //totalDamage++;
@@ -51,6 +53,7 @@ if (bossHp.value <= 0){
 
   score.value += 500;
   bossHp.value = 100 * deathCount.value;
+
 }
 }
 
@@ -68,85 +71,94 @@ function bossKillTime(){
 </script>
 
 <template>
-  <v-app>
-  <div id="app" v-cloak>
-    <div class="stats">
-      <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined" >
+  <v-app >
+    
+      <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined">
+        <v-row>
 
-        <span class="clicks">Total Points: {{ score }}</span>
-      <v-spacer></v-spacer>
-        <span class="perSecond">Damage per Second: {{ perSecond}}</span>
-        <v-spacer></v-spacer>
-        <v-avatar size="80" rounded="0">
+          <v-col>
+            <span class="clicks">Total Points: {{ score }}</span>
+          </v-col>
+
+          <v-spacer></v-spacer>
+
+          <v-col>
+            <span class="perSecond">Damage per Second: {{ perSecond}}</span>
+          </v-col>
+
+          <v-spacer></v-spacer>
+
+          <v-col>
+            <span class="clicks">Boss HP {{ bossHp }}</span>
+          </v-col>
+          
+          <v-spacer></v-spacer>
+
+          <v-col>
+            <span class="clicks">Boss killed {{ deathCount }} times</span>
+          </v-col>
+
+          <v-col>
+            <v-avatar size="200" rounded="0">
               <v-img 
-              src="../assets/pics/milker.jpeg"
-              alt="BOSS">
+                src="../assets/pics/rubick.png"
+                alt="BOSS">
               </v-img>
-        </v-avatar>
-        <v-spacer></v-spacer>
-        <span class="clicks">Boss HP {{ bossHp }}</span>
-        <v-spacer></v-spacer>
-        <span class="clicks">Boss killed {{ deathCount }} times</span>
+            </v-avatar>
+          <v-spacer></v-spacer>
+        </v-col>
+
+      </v-row>
     </v-card>
-    </div>
-  
-    <div class="score"></div>
     
     <v-card class="rounded-card" variant="outlined">
-    <v-btn class="btn-add" @click="addToScore" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
-  
-        <div class="shop">
 
+      <v-row> 
+
+        <v-col>
+          <v-btn class="btn-add" @click="addToScore" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
+        </v-col>
+        
+        <v-spacer></v-spacer>
+
+        <v-col>
           <v-btn class="btn-hamon" @click="increaseAddSize" rounded="pill" variant="outlined">+ 1 on Damage
             <v-avatar>
               <v-img 
-              src="../assets/pics/hamon.png"
-              alt="HAMON">
+                src="../assets/pics/hamon.png"
+                alt="HAMON">
               </v-img>
             </v-avatar>
           </v-btn>
-          <v-spacer></v-spacer>
           <span>Cost: {{ hamonUpdateCost }}</span>
+        </v-col>
 
-      <v-spacer></v-spacer>
-      
-        <v-btn class="btn-arrow" @click="increasePerSecond" rounded="pill" variant="outlined">+ 1 on Damage per Second
-          <v-avatar>
-              <v-img 
-              src="../assets/pics/arrow.png"
-              alt="ARROW">
-              </v-img>
-            </v-avatar>
-        </v-btn>
         <v-spacer></v-spacer>
-        <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
-
-      </div>
+      
+        <v-col>
+          <v-btn class="btn-arrow" @click="increasePerSecond" rounded="pill" variant="outlined">+ 1 on Damage per Second
+            <v-avatar>
+                <v-img 
+                  src="../assets/pics/arrow.png"
+                  alt="ARROW">
+                </v-img>
+              </v-avatar>
+          </v-btn>
+          <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
+        </v-col>
+      </v-row> 
     </v-card>
-  
-  </div> 
   </v-app>
-   
   </template>
 
 <style>
-html {
-  box-sizing: border-box;
-}
-*{
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
-body{
-  /* background: url('./assets/pics/morio.jpg')no-repeat center center fixed !important; */
-  /* background-size: cover; */
 
+body{
+  /*padding-top: 25%;*/
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
 }
+
 @font-face {
   font-family: 'SF_Fedora';
   src: url('../assets/font/SF_Fedora.ttf');
@@ -159,12 +171,16 @@ body{
 
 .rounded-card{
     border-radius:50px;
-    padding: 5%;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.v-application.v-theme--light.v-layout.v-layout--full-height.v-locale--is-ltr {
+  background: transparent;
 }
 
 #app{
-  font-family: SF_Fedora;
+  font-family: SF_Fedora; 
 }
-
 </style>
 

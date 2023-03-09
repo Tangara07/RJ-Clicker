@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app >
     <v-main>
       <HelloWorld/>
     </v-main>
@@ -21,3 +21,10 @@ export default {
   }),
 }
 </script>
+
+<style>
+body{
+  background: url('./assets/pics/morio.jpg')no-repeat center center fixed !important; 
+  background-size: cover !important;
+}
+</style>
