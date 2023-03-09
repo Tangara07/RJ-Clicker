@@ -4,38 +4,43 @@ import {ref} from "vue";
 let score = ref(0);
 let addSize = ref(1);
 let perSecond = ref(0);
-//let totalDamage = 0;
+
 let hamonUpdateCost = ref(10);
+let foolUpdateCost = ref(2000);
+
 let arrowUpdateCost = ref(20);
+let splatinumUpdateCost = ref(1000);
+
+let theWorldUpdateCost = ref(10000);
+
 let bossHp = ref(100);
 let deathCount = ref(0);
 let interval = null;
 let bossCount = ref(1);
 
-let rubick = ref("../assets/pics/rubick.png");
-let marton = ref("../assets/pics/matron.png");
-let robi = ref("../assets/pics/robi.png"); 
-
 function addToScore(){
   score.value += addSize.value;
-  //totalDamage++;
   bossKillClick();
 }
 
-function increaseAddSize(){
+function increaseHitDamage(){
 if(score.value >= hamonUpdateCost.value){
   score.value -= hamonUpdateCost.value;
   addSize.value++;
   hamonUpdateCost.value = parseInt(hamonUpdateCost.value * 1.25);
 }
 }
-function startInterval() {
-  interval = setInterval(() => {
-    score.value += perSecond.value;
-    bossKillTime();
-  }, 1000)
+
+function increaseFoolDamage(){
+  if(score.value >= foolUpdateCost.value){
+    score.value -= foolUpdateCost.value;
+    addSize.value += 100;
+    foolUpdateCost.value = parseInt(foolUpdateCost.value * 3.15);
+  }
+  
 }
-function increasePerSecond(){
+
+function increaseArrowPerSecond(){
   if (score.value >= arrowUpdateCost.value){
     clearInterval(interval);
     perSecond.value++;
@@ -48,6 +53,40 @@ function increasePerSecond(){
   }
 }
 
+function increaseSPlatinumPerSecond(){
+  if (score.value >= splatinumUpdateCost.value){
+    clearInterval(interval);
+    perSecond.value += 100;
+    score.value -= splatinumUpdateCost.value;
+    splatinumUpdateCost.value = parseInt(splatinumUpdateCost.value * 3);
+    
+    if (perSecond.value > 0) {
+      startInterval();
+    }
+  }
+}
+
+function increaseTheWorldPerSecond(){
+  if (score.value >= theWorldUpdateCost.value){
+    clearInterval(interval);
+    addSize.value += 500;
+    perSecond.value += 300;
+    score.value -= theWorldUpdateCost.value;
+    theWorldUpdateCost.value = parseInt(theWorldUpdateCost.value * 5);
+    
+    if (perSecond.value > 0) {
+      startInterval();
+    }
+  }
+}
+
+function startInterval() {
+  interval = setInterval(() => {
+    score.value += perSecond.value;
+    bossKillTime();
+  }, 1000)
+}
+
 function bossKillClick(){
 bossHp.value -= addSize.value;
 
@@ -55,7 +94,21 @@ bossHp.value -= addSize.value;
 if (bossHp.value <= 0){
   deathCount.value++;
 
+  if(deathCount.value < 20){
+
   score.value += 500;
+  }
+  else if (deathCount.value >= 20){
+    score.value += 1000;
+  }
+  else if (deathCount.value >= 40){
+    score.value += 2000;
+  }
+  else if (deathCount.value >= 60){
+    score.value += 5000;
+  }
+
+
   bossHp.value = 100 * deathCount.value;
 
   bossCount.value++;
@@ -81,23 +134,6 @@ function bossKillTime(){
     bossCount.value = 1;
     }
   }
-}
-
-function bossSummon(){
-
-  let image = ref("../assets/pics/rubick.png");
-
-  if (bossCount.value == 1){
-    image.value = rubick.value;
-  }
-  else if (bossCount.value == 2){
-    image.value = marton.value;
-  }
-  else if (bossCount.value == 3){
-    image.value = robi.value;
-  }
-
-  return image;
 }
 
 </script>
@@ -130,10 +166,9 @@ function bossSummon(){
 
           <v-col>
             <v-avatar size="200" rounded="0">
-              <v-img 
-                :src= "bossSummon()"
-                alt="BOSS">
-              </v-img>
+              <v-img v-if="bossCount==1" src="../assets/pics/rubick.png"></v-img>
+              <v-img v-if="bossCount==2" src="../assets/pics/marton.png"></v-img>
+              <v-img v-if="bossCount==3" src="../assets/pics/robi.png"></v-img>
             </v-avatar>
           <v-spacer></v-spacer>
         </v-col>
@@ -146,13 +181,13 @@ function bossSummon(){
       <v-row> 
 
         <v-col>
-          <v-btn class="btn-add" @click="addToScore" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
+          <v-btn class="btn-hit" @click="addToScore" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
         </v-col>
         
         <v-spacer></v-spacer>
 
         <v-col>
-          <v-btn class="btn-hamon" @click="increaseAddSize" rounded="pill" variant="outlined">+ 1 on Damage
+          <v-btn class="btn-hamon" @click="increaseHitDamage" rounded="pill" variant="outlined">+ 1 on Damage
             <v-avatar>
               <v-img 
                 src="../assets/pics/hamon.png"
@@ -160,13 +195,13 @@ function bossSummon(){
               </v-img>
             </v-avatar>
           </v-btn>
-          <span>Cost: {{ hamonUpdateCost }}</span>
+          <span >Cost: {{ hamonUpdateCost }}</span>
         </v-col>
 
         <v-spacer></v-spacer>
       
         <v-col>
-          <v-btn class="btn-arrow" @click="increasePerSecond" rounded="pill" variant="outlined">+ 1 on Damage per Second
+          <v-btn class="btn-arrow" @click="increaseArrowPerSecond" rounded="pill" variant="outlined">+ 1 on Damage per Second
             <v-avatar>
                 <v-img 
                   src="../assets/pics/arrow.png"
@@ -177,6 +212,49 @@ function bossSummon(){
           <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
         </v-col>
       </v-row> 
+
+      <v-row>
+        <v-col v-show="deathCount >= 20">
+          <v-btn class="btn-fool" @click="increaseFoolDamage" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit
+            <v-avatar>
+                <v-img 
+                  src="../assets/pics/iggi.png"
+                  alt="TheFool">
+                </v-img>
+              </v-avatar>
+          </v-btn>
+          <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col v-show="deathCount >= 50">
+          <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second
+            <v-avatar>
+                <v-img 
+                  src="../assets/pics/star_platinum.png"
+                  alt="StarPlatinum">
+                </v-img>
+              </v-avatar>
+          </v-btn>
+          <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col v-show="deathCount >= 100">
+          <v-btn class="btn-theworld" @click="increaseTheWorldPerSecond" rounded="pill" variant="outlined">The World attack: +500 Damage per Hit and +300 Damage per Second
+            <v-avatar>
+                <v-img 
+                  src="../assets/pics/dio.png"
+                  alt="TheWorld">
+                </v-img>
+              </v-avatar>
+          </v-btn>
+          <span class="text-wrap">Cost: {{ theWorldUpdateCost }}</span>
+        </v-col>
+      </v-row>
+
     </v-card> 
   </v-app>
   </template>
