@@ -11,7 +11,7 @@
 
 #### At First u need to install node, and fter that u should install vue:
 
-#### -Open Windows-Terminal and use this command, to download Vue directly on Windows:
+#### Open Windows-Terminal and use this command, to download Vue directly on Windows:
 
 ```
 npm install vue
