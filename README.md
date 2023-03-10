@@ -1,6 +1,6 @@
 # RJ-clicker
 
-![alt logo](src/assets/pics/logo.png)
+![alt logo](src/assets/pics/rj-logo.png)
 
 ## Little clicker game
 #### Kill bosses, get more points, upgrade ur damege. More kills - more upgrades.
