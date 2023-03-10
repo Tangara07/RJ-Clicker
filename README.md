@@ -2,7 +2,7 @@
 
 ![alt logo](src/assets/pics/rj-logo.png)
 
-## Little clicker game
+## Clicker game
 #### Kill bosses, get more points, upgrade ur damege. More kills - more upgrades.
 
 ## Code
