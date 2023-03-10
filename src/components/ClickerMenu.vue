@@ -113,7 +113,7 @@ if (bossHp.value <= 0){
 
   bossCount.value++;
 
-  if(bossCount.value > 3){
+  if(bossCount.value > 7){
     bossCount.value = 1;
   }
 }
@@ -130,7 +130,7 @@ function bossKillTime(){
 
     bossCount.value++;
 
-    if(bossCount.value > 3){
+    if(bossCount.value > 7){
     bossCount.value = 1;
     }
   }
@@ -143,32 +143,36 @@ function bossKillTime(){
       <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined">
         <v-row>
           <v-col>
-            <span class="clicks">Total Points: <v-col>{{ score }}</v-col></span>
+            <span class="clicks">Total Points: <v-spacer></v-spacer> {{ score }}</span>
           </v-col>
 
           <v-spacer></v-spacer>
 
           <v-col>
-            <span class="perSecond">Damage per Second: <v-col>{{ perSecond}}</v-col></span>
+            <span class="perSecond">Damage per Second:  <v-spacer></v-spacer>{{ perSecond}}</span>
           </v-col>
 
           <v-spacer></v-spacer>
 
           <v-col>
-            <span class="clicks">Boss HP <v-col>{{ bossHp }}</v-col></span>
+            <span class="clicks">Boss HP  <v-spacer></v-spacer>{{ bossHp }}</span>
           </v-col>
           
           <v-spacer></v-spacer>
 
           <v-col>
-            <span class="clicks">Boss killed <v-col>{{ deathCount }}</v-col> times</span>
+            <span class="clicks">Boss killed  <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>
           </v-col>
 
           <v-col>
             <v-avatar size="200" rounded="0">
-              <v-img v-if="bossCount==1" src="../assets/pics/rubick.png"></v-img>
-              <v-img v-if="bossCount==2" src="../assets/pics/marton.png"></v-img>
-              <v-img v-if="bossCount==3" src="../assets/pics/robi.png"></v-img>
+              <v-img v-if="bossCount==1" src="../assets/pics/bosses/rat.png"></v-img>
+              <v-img v-if="bossCount==2" src="../assets/pics/bosses/diavolo.png"></v-img>
+              <v-img v-if="bossCount==3" src="../assets/pics/bosses/giorno.png"></v-img>
+              <v-img v-if="bossCount==4" src="../assets/pics/bosses/giorno_diavolo.png"></v-img>
+              <v-img v-if="bossCount==5" src="../assets/pics/bosses/josuke.png"></v-img>
+              <v-img v-if="bossCount==6" src="../assets/pics/bosses/kira.png"></v-img>
+              <v-img v-if="bossCount==7" src="../assets/pics/bosses/josuke_kira.png"></v-img>
             </v-avatar>
           <v-spacer></v-spacer>
         </v-col>
@@ -187,71 +191,76 @@ function bossKillTime(){
         <v-spacer></v-spacer>
 
         <v-col>
-          <v-btn class="btn-hamon" @click="increaseHitDamage" rounded="pill" variant="outlined">+ 1 on Damage
-            <v-avatar>
+          <v-btn class="btn-hamon" @click="increaseHitDamage" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
+          <v-spacer></v-spacer>          
+          <span >Cost: {{ hamonUpdateCost }}</span>
+          <v-spacer></v-spacer>
+          <v-avatar size="150">
               <v-img 
-                src="../assets/pics/hamon.png"
+                src="../assets/pics/upgrades/hamon.png"
                 alt="HAMON">
               </v-img>
             </v-avatar>
-          </v-btn>
-          <span >Cost: {{ hamonUpdateCost }}</span>
         </v-col>
 
         <v-spacer></v-spacer>
       
         <v-col>
-          <v-btn class="btn-arrow" @click="increaseArrowPerSecond" rounded="pill" variant="outlined">+ 1 on Damage per Second
-            <v-avatar>
-                <v-img 
-                  src="../assets/pics/arrow.png"
-                  alt="ARROW">
-                </v-img>
-              </v-avatar>
-          </v-btn>
+          <v-btn class="btn-arrow" @click="increaseArrowPerSecond" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
+          <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
+          <v-spacer></v-spacer>
+          <v-avatar size="150">
+              <v-img 
+                src="../assets/pics/upgrades/arrow.png"
+                alt="ARROW">
+              </v-img>
+            </v-avatar>
         </v-col>
       </v-row> 
 
       <v-row>
         <v-col v-show="deathCount >= 20">
-          <v-btn class="btn-fool" @click="increaseFoolDamage" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit
-            <v-avatar>
-                <v-img 
-                  src="../assets/pics/iggi.png"
-                  alt="TheFool">
-                </v-img>
-              </v-avatar>
-          </v-btn>
+          <v-btn class="btn-fool" @click="increaseFoolDamage" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
+          <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
+          <v-spacer></v-spacer>
+          <v-avatar size="150">
+              <v-img 
+                src="../assets/pics/upgrades/iggi.png"
+                alt="TheFool">
+              </v-img>
+            </v-avatar>
         </v-col>
       </v-row>
 
       <v-row>
         <v-col v-show="deathCount >= 50">
-          <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second
-            <v-avatar>
-                <v-img 
-                  src="../assets/pics/star_platinum.png"
-                  alt="StarPlatinum">
-                </v-img>
-              </v-avatar>
-          </v-btn>
+          <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
+          <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
+          <v-spacer></v-spacer>
+          <v-avatar size="150">
+              <v-img 
+                src="../assets/pics/upgrades/star_platinum.png"
+                alt="StarPlatinum">
+              </v-img>
+            </v-avatar>
         </v-col>
       </v-row>
 
       <v-row>
         <v-col v-show="deathCount >= 100">
-          <v-btn class="btn-theworld" @click="increaseTheWorldPerSecond" rounded="pill" variant="outlined">The World attack: +500 Damage per Hit and +300 Damage per Second
-            <v-avatar>
-                <v-img 
-                  src="../assets/pics/dio.png"
-                  alt="TheWorld">
-                </v-img>
-              </v-avatar>
-          </v-btn>
+          <v-btn class="btn-theworld" @click="increaseTheWorldPerSecond" rounded="pill" variant="outlined">The World attack: +500 Damage per Hit and +300 Damage per Second</v-btn>
+          <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ theWorldUpdateCost }}</span>
+          <v-spacer></v-spacer>
+          <v-avatar size="150">
+            <v-img 
+              src="../assets/pics/upgrades/theworld.png"
+              alt="TheWorld">
+            </v-img>
+          </v-avatar>
         </v-col>
       </v-row>
 
@@ -262,7 +271,8 @@ function bossKillTime(){
 <style>
 
 .v-card{
-  padding: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 body{
