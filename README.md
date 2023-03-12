@@ -1,4 +1,4 @@
-# RJ-clicker
+# RJ-Clicker
 
 ![alt logo](src/assets/pics/rj-logo.png)
 
