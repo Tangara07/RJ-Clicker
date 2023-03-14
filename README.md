@@ -3,7 +3,7 @@
 ![alt logo](src/assets/pics/rj-logo.png)
 
 ## Clicker game
-#### Kill bosses, get more points, upgrade ur damege. More kills - more upgrades.
+#### Kill bosses, get more points, upgrade ur damage. More kills - more upgrades.
 
 ## Code
 #### Main code u can find in src/components/ClickerMenu.vue
