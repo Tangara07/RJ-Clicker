@@ -89,7 +89,7 @@ export default {
 
     increaseSPlatinumPerSecond(){
       if (this.score >= this.splatinumUpdateCost){
-        clearInterval(this);
+        clearInterval(this.interval);
         this.perSecond += 100;
         this.score -= this.splatinumUpdateCost;
         this.splatinumUpdateCost = parseInt(this.splatinumUpdateCost * 3);
@@ -176,7 +176,9 @@ export default {
 </script>
 
 <template>
-  <v-app >
+  <v-app>
+    <v-row>
+      <v-col>
       <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined">
         <v-row>
           <v-col>
@@ -198,23 +200,28 @@ export default {
           <v-spacer></v-spacer>
 
           <v-col>
-            <v-row>
-              <span class="clicks">Boss killed  <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>
-            </v-row>
-            <v-row>
-              <span class="pink">{{switchBossName}}</span>
-            </v-row>
+              <span class="clicks">Boss killed  <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>        
           </v-col>
-
-          <v-col>
-            <v-avatar size="200" rounded="0">
-              <v-img v-bind:src="switchBoss"></v-img>
-            </v-avatar>
-          <v-spacer></v-spacer>
-        </v-col>
 
       </v-row>
     </v-card>
+  </v-col>
+
+    <v-col>
+    <v-card class="rounded-card" variant="outlined">
+      
+      <v-col>
+        <span class="pink">{{switchBossName}}</span>
+      </v-col>
+
+      <v-col>
+        <v-avatar size="200" rounded="0">
+          <v-img v-bind:src="switchBoss"></v-img>
+        </v-avatar>
+      </v-col>
+    </v-card>
+  </v-col>
+    </v-row>
     
     <v-card class="rounded-card" variant="outlined">
 
@@ -310,17 +317,15 @@ export default {
   color: #EC008C !important;
 }
 
-.v-row{
-  margin: 1%;
-}
-
-.v-col{
-  margin-left: 1%;
-}
-
 .v-card{
   padding-left: 5%;
   padding-right: 5%;
+  height: 100%;
+  width: 100%;
+}
+
+.v-col{
+  align-content: center;
 }
 
 body{
