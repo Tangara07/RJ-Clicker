@@ -1,12 +1,18 @@
 <script>
 
-import rat from '../assets/pics/bosses/rat.png';
-import diavolo from '../assets/pics/bosses/diavolo.png';
-import giorno from '../assets/pics/bosses/giorno.png';
-import giorno_diavolo from '../assets/pics/bosses/giorno_diavolo.png';
-import josuke from '../assets/pics/bosses/josuke.png'
-import kira from '../assets/pics/bosses/kira.png';
-import josuke_kira from '../assets/pics/bosses/josuke_kira.png';
+import dio from '../assets/pics/bosses/Part1/dio.png';
+import speedwagon from '../assets/pics/bosses/Part1/speedwagon.png';
+import wang_chan from '../assets/pics/bosses/Part1/wang_chan.png';
+import jack_the_ripper from '../assets/pics/bosses/Part1/jack_the_ripper.png';
+import bruford from '../assets/pics/bosses/Part1/bruford.png';
+import tarkus from '../assets/pics/bosses/Part1/tarkus.png';
+import dio_vampire from '../assets/pics/bosses/Part1/dio_vampire.png';
+
+import straizo from '../assets/pics/bosses/Part2/straizo.png';
+import santana from '../assets/pics/bosses/Part2/santana.png';
+import wammu from '../assets/pics/bosses/Part2/wammu.png';
+import acdc from '../assets/pics/bosses/Part2/acdc.png';
+import kars from '../assets/pics/bosses/Part2/kars.png';
 
 export default {
   data(){
@@ -31,23 +37,35 @@ export default {
       index: 0,
 
       bossList: [
-            rat,
-            diavolo,
-            giorno,
-            giorno_diavolo,
-            kira,
-            josuke,
-            josuke_kira
+            dio,
+            speedwagon,
+            wang_chan,
+            jack_the_ripper,
+            bruford,
+            tarkus,
+            dio_vampire,
+
+            straizo,
+            santana,
+            wammu,
+            acdc,
+            kars
         ],
 
         bossNamesList: [
-            "Ratt",
-            "Diavolo",
-            "Giorno",
-            "Giorno & Diavolo",
-            "Kira",
-            "Josuke",
-            "Josuke & Kira"
+            "Dio",
+            "Speedwagon",
+            "Wang Chan",
+            "Jack the Ripper",
+            "Bruford",
+            "Tarkus",
+            "Vampire Dio",
+
+            "Straizo",
+            "Santana",
+            "Wammu",
+            "AC/DC",
+            "Kars"
         ],
     };
   },
@@ -177,60 +195,52 @@ export default {
 
 <template>
   <v-app>
-    <v-row>
-      <v-col>
-      <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined">
-        <v-row>
-          <v-col>
-            <span class="clicks">Total Points: <v-spacer></v-spacer> {{ score }}</span>
-          </v-col>
+    <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined">
+      <v-row>
 
-          <v-spacer></v-spacer>
-
-          <v-col>
-            <span class="perSecond">Damage per Second:  <v-spacer></v-spacer>{{ perSecond}}</span>
-          </v-col>
-
-          <v-spacer></v-spacer>
-
-          <v-col>
-            <span class="clicks">Boss HP  <v-spacer></v-spacer>{{ bossHp }}</span>
-          </v-col>
+        <v-col>
+          <span>Total Points: {{ score }}</span>
+        </v-col>
           
-          <v-spacer></v-spacer>
-
-          <v-col>
-              <span class="clicks">Boss killed  <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>        
-          </v-col>
+        <v-col>
+          <span class="perSecond">Damage per Second: {{ perSecond}}</span>
+        </v-col>
+            
+        <v-col>
+          <span>Boss killed <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>        
+        </v-col>
 
       </v-row>
-    </v-card>
-  </v-col>
 
-    <v-col>
-    <v-card class="rounded-card" variant="outlined">
-      
-      <v-col>
-        <span class="pink">{{switchBossName}}</span>
-      </v-col>
+      <v-row>
 
-      <v-col>
-        <v-avatar size="200" rounded="0">
-          <v-img v-bind:src="switchBoss"></v-img>
-        </v-avatar>
-      </v-col>
-    </v-card>
-  </v-col>
-    </v-row>
+        <v-col>
+          <v-spacer></v-spacer>
+          <v-row>
+            <span class="pink">{{switchBossName}}</span>
+          </v-row>
+
+          <v-row>
+            <span class="pink">HP: {{ bossHp }}</span>
+          </v-row>
+        </v-col>
+
+        <v-col>
+          <v-avatar size="250" rounded="0">
+            <v-img v-bind:src="switchBoss"></v-img>
+          </v-avatar>
+        </v-col>
+
+      </v-row>
+    </v-card> 
     
     <v-card class="rounded-card" variant="outlined">
-
-      <v-row> 
+      <v-row>
 
         <v-col>
           <v-btn class="btn-hit" @click="addToScore()" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
         </v-col>
-        
+
         <v-spacer></v-spacer>
 
         <v-col>
@@ -239,11 +249,11 @@ export default {
           <span >Cost: {{ hamonUpdateCost }}</span>
           <v-spacer></v-spacer>
           <v-avatar size="150">
-              <v-img 
-                src="../assets/pics/upgrades/hamon.png"
-                alt="HAMON">
-              </v-img>
-            </v-avatar>
+            <v-img 
+              src="../assets/pics/upgrades/hamon.png"
+              alt="HAMON">
+            </v-img>
+          </v-avatar>
         </v-col>
 
         <v-spacer></v-spacer>
@@ -254,15 +264,13 @@ export default {
           <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
           <v-spacer></v-spacer>
           <v-avatar size="150">
-              <v-img 
-                src="../assets/pics/upgrades/arrow.png"
-                alt="ARROW">
+            <v-img 
+              src="../assets/pics/upgrades/arrow.png"
+              alt="ARROW">
               </v-img>
-            </v-avatar>
+          </v-avatar>
         </v-col>
-      </v-row> 
-
-      <v-row>
+       
         <v-col v-show="deathCount >= 20">
           <v-btn class="btn-fool" @click="increaseFoolDamage()" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
           <v-spacer></v-spacer>
@@ -275,9 +283,9 @@ export default {
               </v-img>
             </v-avatar>
         </v-col>
-      </v-row>
-
-      <v-row>
+      
+        <v-spacer></v-spacer>
+      
         <v-col v-show="deathCount >= 50">
           <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond()" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
           <v-spacer></v-spacer>
@@ -290,9 +298,7 @@ export default {
               </v-img>
             </v-avatar>
         </v-col>
-      </v-row>
-
-      <v-row>
+      
         <v-col v-show="deathCount >= 100">
           <v-btn class="btn-theworld" @click="increaseTheWorldPerSecond()" rounded="pill" variant="outlined">The World attack: +500 Damage per Hit and +300 Damage per Second</v-btn>
           <v-spacer></v-spacer>
@@ -305,8 +311,8 @@ export default {
             </v-img>
           </v-avatar>
         </v-col>
+      
       </v-row>
-
     </v-card> 
   </v-app>
   </template>
@@ -315,22 +321,32 @@ export default {
 
 .pink{
   color: #EC008C !important;
+  font-size: x-large;
+}
+
+.v-card-title{
+  color: #EC008C !important;
+  font-size: xx-large;
+  text-align: center;
 }
 
 .v-card{
-  padding-left: 5%;
-  padding-right: 5%;
-  height: 100%;
-  width: 100%;
+  margin-left: 22%;
+  margin-right: 22%;
+
 }
 
 .v-col{
-  align-content: center;
+  padding-left: 10%;
+}
+
+.v-row{
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 body{
   /*padding-top: 25%;*/
-  display: flex;
   justify-content: center;
 }
 
