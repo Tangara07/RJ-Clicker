@@ -1,137 +1,174 @@
-<script setup>
-import {ref} from "vue";
+<script>
 
-let score = ref(0);
-let addSize = ref(1);
-let perSecond = ref(0);
+import rat from '../assets/pics/bosses/rat.png';
+import diavolo from '../assets/pics/bosses/diavolo.png';
+import giorno from '../assets/pics/bosses/giorno.png';
+import giorno_diavolo from '../assets/pics/bosses/giorno_diavolo.png';
+import josuke from '../assets/pics/bosses/josuke.png'
+import kira from '../assets/pics/bosses/kira.png';
+import josuke_kira from '../assets/pics/bosses/josuke_kira.png';
 
-let hamonUpdateCost = ref(10);
-let foolUpdateCost = ref(2000);
+export default {
+  data(){
+    return{
+      score: 0,
+      addSize: 1,
+      perSecond: 0,
 
-let arrowUpdateCost = ref(20);
-let splatinumUpdateCost = ref(1000);
+      hamonUpdateCost: 10,
+      foolUpdateCost: 2000,
 
-let theWorldUpdateCost = ref(10000);
+      arrowUpdateCost: 20,
+      splatinumUpdateCost: 1000,
 
-let bossHp = ref(100);
-let deathCount = ref(0);
-let interval = null;
-let bossCount = ref(1);
+      theWorldUpdateCost: 10000,
 
-function addToScore(){
-  score.value += addSize.value;
-  bossKillClick();
-}
+      bossHp: 100,
+      deathCount: 0,
+      interval: null,
+      bossCount: 1,
 
-function increaseHitDamage(){
-if(score.value >= hamonUpdateCost.value){
-  score.value -= hamonUpdateCost.value;
-  addSize.value++;
-  hamonUpdateCost.value = parseInt(hamonUpdateCost.value * 1.25);
-}
-}
+      index: 0,
 
-function increaseFoolDamage(){
-  if(score.value >= foolUpdateCost.value){
-    score.value -= foolUpdateCost.value;
-    addSize.value += 100;
-    foolUpdateCost.value = parseInt(foolUpdateCost.value * 3.15);
-  }
-  
-}
+      bossList: [
+            rat,
+            diavolo,
+            giorno,
+            giorno_diavolo,
+            kira,
+            josuke,
+            josuke_kira
+        ],
 
-function increaseArrowPerSecond(){
-  if (score.value >= arrowUpdateCost.value){
-    clearInterval(interval);
-    perSecond.value++;
-    score.value -= arrowUpdateCost.value;
-    arrowUpdateCost.value = parseInt(arrowUpdateCost.value * 1.75);
+        bossNamesList: [
+            "Ratt",
+            "Diavolo",
+            "Giorno",
+            "Giorno & Diavolo",
+            "Kira",
+            "Josuke",
+            "Josuke & Kira"
+        ],
+    };
+  },
+
+  methods: {
+    addToScore(){
+      this.score += this.addSize;
+      this.bossKillClick();
+    },
+
+    increaseHitDamage(){
+      if(this.score >= this.hamonUpdateCost){
+        this.score -= this.hamonUpdateCost;
+        this.addSize++;
+        this.hamonUpdateCost = parseInt(this.hamonUpdateCost * 1.25);
+      }
+    },
+
+    increaseFoolDamage(){
+      if(this.score >= this.foolUpdateCost){
+        this.score -= this.foolUpdateCost;
+        this.addSize += 100;
+        this.foolUpdateCost = parseInt(this.foolUpdateCost * 3.15);
+      }
+    },
+
+    increaseArrowPerSecond(){
+      if (this.score >= this.arrowUpdateCost){
+        clearInterval(this.interval);
+        this.perSecond++;
+        this.score -= this.arrowUpdateCost;
+        this.arrowUpdateCost = parseInt(this.arrowUpdateCost * 1.75);
     
-    if (perSecond.value > 0) {
-      startInterval();
-    }
-  }
-}
+        if (this.perSecond > 0) {
+          this.startInterval();
+        }
+      }
+    },
 
-function increaseSPlatinumPerSecond(){
-  if (score.value >= splatinumUpdateCost.value){
-    clearInterval(interval);
-    perSecond.value += 100;
-    score.value -= splatinumUpdateCost.value;
-    splatinumUpdateCost.value = parseInt(splatinumUpdateCost.value * 3);
+    increaseSPlatinumPerSecond(){
+      if (this.score >= this.splatinumUpdateCost){
+        clearInterval(this);
+        this.perSecond += 100;
+        this.score -= this.splatinumUpdateCost;
+        this.splatinumUpdateCost = parseInt(this.splatinumUpdateCost * 3);
     
-    if (perSecond.value > 0) {
-      startInterval();
-    }
-  }
-}
+        if (this.perSecond > 0) {
+          this.startInterval();
+        }
+      }
+    },
 
-function increaseTheWorldPerSecond(){
-  if (score.value >= theWorldUpdateCost.value){
-    clearInterval(interval);
-    addSize.value += 500;
-    perSecond.value += 300;
-    score.value -= theWorldUpdateCost.value;
-    theWorldUpdateCost.value = parseInt(theWorldUpdateCost.value * 5);
+    increaseTheWorldPerSecond(){
+      if (this.score >= this.theWorldUpdateCost){
+        clearInterval(this.interval);
+        this.addSize += 500;
+        this.perSecond += 300;
+        this.score -= this.theWorldUpdateCost;
+        this.theWorldUpdateCost = parseInt(this.theWorldUpdateCost * 5);
     
-    if (perSecond.value > 0) {
-      startInterval();
+        if (this.perSecond > 0) {
+          this.startInterval();
+        }
+      }
+    },
+
+    startInterval() {
+      this.interval = setInterval(() => {
+        this.score += this.perSecond;
+        this.bossKillTime();
+      }, 1000)
+    },
+
+    bossKillClick(){
+      this.bossHp -= this.addSize;
+      this.switchBossIdx();
+    },
+
+    bossKillTime(){
+      this.bossHp -= this.perSecond;
+      this.switchBossIdx();
+    },
+
+    switchBossIdx() {
+      if (this.bossHp <= 0){
+        this.index++;
+
+        if (this.index > this.bossList.length - 1){
+          this.index = 0;
+        }
+     }
+
+     if (this.bossHp <= 0){
+        this.deathCount++;
+
+        if(this.deathCount < 20){
+          this.score += 500;
+        }
+        else if (this.deathCount >= 20){
+          this.score += 1000;
+        }
+        else if (this.deathCount >= 40){
+          this.score += 2000;
+        }
+        else if (this.deathCount >= 60){
+          this.score += 5000;
+        }
+        
+        this.bossHp = 100 * this.deathCount;
+      }
+
     }
-  }
-}
+  },
 
-function startInterval() {
-  interval = setInterval(() => {
-    score.value += perSecond.value;
-    bossKillTime();
-  }, 1000)
-}
+  computed: {
+    switchBoss() {
+      return this.bossList[this.index];
+    },
 
-function bossKillClick(){
-bossHp.value -= addSize.value;
-
-
-if (bossHp.value <= 0){
-  deathCount.value++;
-
-  if(deathCount.value < 20){
-
-  score.value += 500;
-  }
-  else if (deathCount.value >= 20){
-    score.value += 1000;
-  }
-  else if (deathCount.value >= 40){
-    score.value += 2000;
-  }
-  else if (deathCount.value >= 60){
-    score.value += 5000;
-  }
-
-
-  bossHp.value = 100 * deathCount.value;
-
-  bossCount.value++;
-
-  if(bossCount.value > 7){
-    bossCount.value = 1;
-  }
-}
-}
-
-function bossKillTime(){
-  bossHp.value -= perSecond.value;
-
-    if (bossHp.value <= 0){
-    deathCount.value++;
-
-    score.value += 500;
-    bossHp.value = 100 * deathCount.value;
-
-    bossCount.value++;
-
-    if(bossCount.value > 7){
-    bossCount.value = 1;
+    switchBossName() {
+      return this.bossNamesList[this.index];
     }
   }
 }
@@ -161,18 +198,17 @@ function bossKillTime(){
           <v-spacer></v-spacer>
 
           <v-col>
-            <span class="clicks">Boss killed  <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>
+            <v-row>
+              <span class="clicks">Boss killed  <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>
+            </v-row>
+            <v-row>
+              <span class="pink">{{switchBossName}}</span>
+            </v-row>
           </v-col>
 
           <v-col>
             <v-avatar size="200" rounded="0">
-              <v-img v-if="bossCount==1" src="../assets/pics/bosses/rat.png"></v-img>
-              <v-img v-if="bossCount==2" src="../assets/pics/bosses/diavolo.png"></v-img>
-              <v-img v-if="bossCount==3" src="../assets/pics/bosses/giorno.png"></v-img>
-              <v-img v-if="bossCount==4" src="../assets/pics/bosses/giorno_diavolo.png"></v-img>
-              <v-img v-if="bossCount==5" src="../assets/pics/bosses/josuke.png"></v-img>
-              <v-img v-if="bossCount==6" src="../assets/pics/bosses/kira.png"></v-img>
-              <v-img v-if="bossCount==7" src="../assets/pics/bosses/josuke_kira.png"></v-img>
+              <v-img v-bind:src="switchBoss"></v-img>
             </v-avatar>
           <v-spacer></v-spacer>
         </v-col>
@@ -185,13 +221,13 @@ function bossKillTime(){
       <v-row> 
 
         <v-col>
-          <v-btn class="btn-hit" @click="addToScore" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
+          <v-btn class="btn-hit" @click="addToScore()" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
         </v-col>
         
         <v-spacer></v-spacer>
 
         <v-col>
-          <v-btn class="btn-hamon" @click="increaseHitDamage" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
+          <v-btn class="btn-hamon" @click="this.increaseHitDamage()" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
           <v-spacer></v-spacer>          
           <span >Cost: {{ hamonUpdateCost }}</span>
           <v-spacer></v-spacer>
@@ -206,7 +242,7 @@ function bossKillTime(){
         <v-spacer></v-spacer>
       
         <v-col>
-          <v-btn class="btn-arrow" @click="increaseArrowPerSecond" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
+          <v-btn class="btn-arrow" @click="increaseArrowPerSecond()" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
           <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
           <v-spacer></v-spacer>
@@ -221,7 +257,7 @@ function bossKillTime(){
 
       <v-row>
         <v-col v-show="deathCount >= 20">
-          <v-btn class="btn-fool" @click="increaseFoolDamage" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
+          <v-btn class="btn-fool" @click="increaseFoolDamage()" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
           <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
           <v-spacer></v-spacer>
@@ -236,7 +272,7 @@ function bossKillTime(){
 
       <v-row>
         <v-col v-show="deathCount >= 50">
-          <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
+          <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond()" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
           <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
           <v-spacer></v-spacer>
@@ -251,7 +287,7 @@ function bossKillTime(){
 
       <v-row>
         <v-col v-show="deathCount >= 100">
-          <v-btn class="btn-theworld" @click="increaseTheWorldPerSecond" rounded="pill" variant="outlined">The World attack: +500 Damage per Hit and +300 Damage per Second</v-btn>
+          <v-btn class="btn-theworld" @click="increaseTheWorldPerSecond()" rounded="pill" variant="outlined">The World attack: +500 Damage per Hit and +300 Damage per Second</v-btn>
           <v-spacer></v-spacer>
           <span class="text-wrap">Cost: {{ theWorldUpdateCost }}</span>
           <v-spacer></v-spacer>
@@ -269,6 +305,18 @@ function bossKillTime(){
   </template>
 
 <style>
+
+.pink{
+  color: #EC008C !important;
+}
+
+.v-row{
+  margin: 1%;
+}
+
+.v-col{
+  margin-left: 1%;
+}
 
 .v-card{
   padding-left: 5%;
