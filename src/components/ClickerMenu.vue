@@ -25,6 +25,9 @@ import nena_empress from '../assets/pics/bosses/Part3/nena_empress.png';
 import zz from '../assets/pics/bosses/Part3/zz.png';
 import enya_geil from '../assets/pics/bosses/Part3/enya_geil.png';
 import steely_dan from '../assets/pics/bosses/Part3/steely_dan.png';
+import vanilla_ice from '../assets/pics/bosses/Part3/vanilla_ice.png';
+import dio_the_world from '../assets/pics/bosses/Part3/dio_the_world.png';
+
 
 export default {
   data(){
@@ -61,7 +64,21 @@ export default {
             santana,
             wammu,
             acdc,
-            kars
+            kars,
+
+            tower,
+            cap_tennille,
+            forever,
+            devo_the_cursed,
+            rubber_soul,
+            j_geil,
+            hol_horse,
+            nena_empress,
+            zz,
+            enya_geil,
+            steely_dan,
+            vanilla_ice,
+            dio_the_world
         ],
 
         bossNamesList: [
@@ -77,7 +94,21 @@ export default {
             "Santana",
             "Wammu",
             "AC/DC",
-            "Kars"
+            "Kars",
+
+            "Tower of Gray",
+            "Capitan Tennille",
+            "Forever",
+            "Devo the Cursed",
+            "Rubber Soul",
+            "J Geil",
+            "Hol Horse",
+            "Nena (Empress)",
+            "ZZ",
+            "Enya Geil",
+            "Steely Dan",
+            "Vanilla Ice",
+            "Dio (The World)"
         ],
     };
   },
@@ -211,7 +242,7 @@ export default {
       <v-row>
 
         <v-col>
-          <span>Total Points: {{ score }}</span>
+          <span>Total Points: {{ script }} </span>
         </v-col>
           
         <v-col>
