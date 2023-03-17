@@ -110,6 +110,19 @@ export default {
             "Vanilla Ice",
             "Dio (The World)"
         ],
+
+        List: [
+      {
+        name: "Dio",
+        image: dio
+      },
+      {
+        name: "Speedwagon",
+        image: speedwagon
+      },
+      
+    ]
+
     };
   },
 
@@ -196,7 +209,7 @@ export default {
       if (this.bossHp <= 0){
         this.index++;
 
-        if (this.index > this.bossList.length - 1){
+        if (this.index > this.List.length - 1){
           this.index = 0;
         }
      }
@@ -225,11 +238,11 @@ export default {
 
   computed: {
     switchBoss() {
-      return this.bossList[this.index];
+      return this.List[this.index].image;
     },
 
     switchBossName() {
-      return this.bossNamesList[this.index];
+      return this.List[this.index].name;
     }
   }
 }
@@ -242,7 +255,7 @@ export default {
       <v-row>
 
         <v-col>
-          <span>Total Points: {{ script }} </span>
+          <span>Total Points: {{ score }} </span>
         </v-col>
           
         <v-col>
