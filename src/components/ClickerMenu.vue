@@ -25,9 +25,6 @@ import nena_empress from '../assets/pics/bosses/Part3/nena_empress.png';
 import zz from '../assets/pics/bosses/Part3/zz.png';
 import enya_geil from '../assets/pics/bosses/Part3/enya_geil.png';
 import steely_dan from '../assets/pics/bosses/Part3/steely_dan.png';
-import kars from '../assets/pics/bosses/Part3/.png';
-import kars from '../assets/pics/bosses/Part3/.png';
-import kars from '../assets/pics/bosses/Part3/.png';
 
 export default {
   data(){
