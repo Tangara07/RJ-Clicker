@@ -270,6 +270,8 @@ export default {
               </v-img>
           </v-avatar>
         </v-col>
+
+        <v-spacer></v-spacer>
        
         <v-col v-show="deathCount >= 20">
           <v-btn class="btn-fool" @click="increaseFoolDamage()" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>

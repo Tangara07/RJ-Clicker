@@ -25,7 +25,7 @@ export default {
 <style>
 
 body{
-  background: url('./assets/pics/morio.jpg')no-repeat center center fixed !important; 
+  background: url('./assets/pics/sbr.jpg')no-repeat center center fixed !important; 
   background-size: cover !important;
 }
 </style>
