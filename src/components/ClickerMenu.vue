@@ -14,6 +14,21 @@ import wammu from '../assets/pics/bosses/Part2/wammu.png';
 import acdc from '../assets/pics/bosses/Part2/acdc.png';
 import kars from '../assets/pics/bosses/Part2/kars.png';
 
+import tower from '../assets/pics/bosses/Part3/tower_of_gray.png';
+import cap_tennille from '../assets/pics/bosses/Part3/capitan_tennille.png';
+import forever from '../assets/pics/bosses/Part3/forever.png';
+import devo_the_cursed from '../assets/pics/bosses/Part3/devo_the_cursed.png';
+import rubber_soul from '../assets/pics/bosses/Part3/rubber_soul.png';
+import j_geil from '../assets/pics/bosses/Part3/j_geil.png';
+import hol_horse from '../assets/pics/bosses/Part3/hol_horse.png';
+import nena_empress from '../assets/pics/bosses/Part3/nena_empress.png';
+import zz from '../assets/pics/bosses/Part3/zz.png';
+import enya_geil from '../assets/pics/bosses/Part3/enya_geil.png';
+import steely_dan from '../assets/pics/bosses/Part3/steely_dan.png';
+import kars from '../assets/pics/bosses/Part3/.png';
+import kars from '../assets/pics/bosses/Part3/.png';
+import kars from '../assets/pics/bosses/Part3/.png';
+
 export default {
   data(){
     return{
