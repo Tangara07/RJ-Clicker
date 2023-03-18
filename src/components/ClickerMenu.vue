@@ -52,20 +52,6 @@ export default {
       index: 0,
 
       bossList: [
-            dio,
-            speedwagon,
-            wang_chan,
-            jack_the_ripper,
-            bruford,
-            tarkus,
-            dio_vampire,
-
-            straizo,
-            santana,
-            wammu,
-            acdc,
-            kars,
-
             tower,
             cap_tennille,
             forever,
@@ -82,20 +68,6 @@ export default {
         ],
 
         bossNamesList: [
-            "Dio",
-            "Speedwagon",
-            "Wang Chan",
-            "Jack the Ripper",
-            "Bruford",
-            "Tarkus",
-            "Vampire Dio",
-
-            "Straizo",
-            "Santana",
-            "Wammu",
-            "AC/DC",
-            "Kars",
-
             "Tower of Gray",
             "Capitan Tennille",
             "Forever",
@@ -120,7 +92,47 @@ export default {
         name: "Speedwagon",
         image: speedwagon
       },
-      
+      {
+        name: "Wang Chan",
+        image: wang_chan
+      },
+      {
+        name: "Jack the Ripper",
+        image: jack_the_ripper
+      },
+      {
+        name: "Bruford",
+        image: bruford
+      },
+      {
+        name: "Tarkus",
+        image: tarkus
+      },
+      {
+        name: "Vampire Dio",
+        image: dio_vampire
+      },
+
+      {
+        name: "Straizo",
+        image: straizo
+      },
+      {
+        name: "Santana",
+        image: santana
+      },
+      {
+        name: "Wammu",
+        image: wammu
+      },
+      {
+        name: "AC/DC",
+        image: acdc
+      },
+      {
+        name: "Kars",
+        image: kars
+      },
     ]
 
     };
