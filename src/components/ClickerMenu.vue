@@ -1,33 +1,6 @@
 <script>
 
-import dio from '../assets/pics/bosses/Part1/dio.png';
-import speedwagon from '../assets/pics/bosses/Part1/speedwagon.png';
-import wang_chan from '../assets/pics/bosses/Part1/wang_chan.png';
-import jack_the_ripper from '../assets/pics/bosses/Part1/jack_the_ripper.png';
-import bruford from '../assets/pics/bosses/Part1/bruford.png';
-import tarkus from '../assets/pics/bosses/Part1/tarkus.png';
-import dio_vampire from '../assets/pics/bosses/Part1/dio_vampire.png';
-
-import straizo from '../assets/pics/bosses/Part2/straizo.png';
-import santana from '../assets/pics/bosses/Part2/santana.png';
-import wammu from '../assets/pics/bosses/Part2/wammu.png';
-import acdc from '../assets/pics/bosses/Part2/acdc.png';
-import kars from '../assets/pics/bosses/Part2/kars.png';
-
-import tower from '../assets/pics/bosses/Part3/tower_of_gray.png';
-import cap_tennille from '../assets/pics/bosses/Part3/capitan_tennille.png';
-import forever from '../assets/pics/bosses/Part3/forever.png';
-import devo_the_cursed from '../assets/pics/bosses/Part3/devo_the_cursed.png';
-import rubber_soul from '../assets/pics/bosses/Part3/rubber_soul.png';
-import j_geil from '../assets/pics/bosses/Part3/j_geil.png';
-import hol_horse from '../assets/pics/bosses/Part3/hol_horse.png';
-import nena_empress from '../assets/pics/bosses/Part3/nena_empress.png';
-import zz from '../assets/pics/bosses/Part3/zz.png';
-import enya_geil from '../assets/pics/bosses/Part3/enya_geil.png';
-import steely_dan from '../assets/pics/bosses/Part3/steely_dan.png';
-import vanilla_ice from '../assets/pics/bosses/Part3/vanilla_ice.png';
-import dio_the_world from '../assets/pics/bosses/Part3/dio_the_world.png';
-
+import {bossList} from '../assets/js/bosses'
 
 export default {
   data(){
@@ -49,91 +22,9 @@ export default {
       interval: null,
       bossCount: 1,
 
-      index: 0,
+      index: 0,  
 
-      bossList: [
-            tower,
-            cap_tennille,
-            forever,
-            devo_the_cursed,
-            rubber_soul,
-            j_geil,
-            hol_horse,
-            nena_empress,
-            zz,
-            enya_geil,
-            steely_dan,
-            vanilla_ice,
-            dio_the_world
-        ],
-
-        bossNamesList: [
-            "Tower of Gray",
-            "Capitan Tennille",
-            "Forever",
-            "Devo the Cursed",
-            "Rubber Soul",
-            "J Geil",
-            "Hol Horse",
-            "Nena (Empress)",
-            "ZZ",
-            "Enya Geil",
-            "Steely Dan",
-            "Vanilla Ice",
-            "Dio (The World)"
-        ],
-
-        List: [
-      {
-        name: "Dio",
-        image: dio
-      },
-      {
-        name: "Speedwagon",
-        image: speedwagon
-      },
-      {
-        name: "Wang Chan",
-        image: wang_chan
-      },
-      {
-        name: "Jack the Ripper",
-        image: jack_the_ripper
-      },
-      {
-        name: "Bruford",
-        image: bruford
-      },
-      {
-        name: "Tarkus",
-        image: tarkus
-      },
-      {
-        name: "Vampire Dio",
-        image: dio_vampire
-      },
-
-      {
-        name: "Straizo",
-        image: straizo
-      },
-      {
-        name: "Santana",
-        image: santana
-      },
-      {
-        name: "Wammu",
-        image: wammu
-      },
-      {
-        name: "AC/DC",
-        image: acdc
-      },
-      {
-        name: "Kars",
-        image: kars
-      },
-    ]
+      bossList: bossList
 
     };
   },
@@ -221,7 +112,7 @@ export default {
       if (this.bossHp <= 0){
         this.index++;
 
-        if (this.index > this.List.length - 1){
+        if (this.index > this.bossList.length - 1){
           this.index = 0;
         }
      }
@@ -250,11 +141,11 @@ export default {
 
   computed: {
     switchBoss() {
-      return this.List[this.index].image;
+      return this.bossList[this.index].image;
     },
 
     switchBossName() {
-      return this.List[this.index].name;
+      return this.bossList[this.index].name;
     }
   }
 }
