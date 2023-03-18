@@ -28,4 +28,14 @@ body{
   background: url('./assets/pics/sbr.jpg')no-repeat center center fixed !important; 
   background-size: cover !important;
 }
+
+@font-face {
+  font-family: 'SF_Fedora';
+  src: url('./assets/font/SF_Fedora.ttf');
+}
+
+.v-application{
+  font-family: SF_Fedora; 
+}
+
 </style>

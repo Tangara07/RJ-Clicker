@@ -1,3 +1,4 @@
+//Part 1
 import dio from '../pics/bosses/Part1/dio.png';
 import speedwagon from '../pics/bosses/Part1/speedwagon.png';
 import wang_chan from '../pics/bosses/Part1/wang_chan.png';
@@ -6,12 +7,14 @@ import bruford from '../pics/bosses/Part1/bruford.png';
 import tarkus from '../pics/bosses/Part1/tarkus.png';
 import dio_vampire from '../pics/bosses/Part1/dio_vampire.png';
 
+//Part 2
 import straizo from '../pics/bosses/Part2/straizo.png';
 import santana from '../pics/bosses/Part2/santana.png';
 import wammu from '../pics/bosses/Part2/wammu.png';
 import acdc from '../pics/bosses/Part2/acdc.png';
 import kars from '../pics/bosses/Part2/kars.png';
 
+//Part 3
 import tower from '../pics/bosses/Part3/tower_of_gray.png';
 import cap_tennille from '../pics/bosses/Part3/capitan_tennille.png';
 import forever from '../pics/bosses/Part3/forever.png';
@@ -25,6 +28,26 @@ import enya_geil from '../pics/bosses/Part3/enya_geil.png';
 import steely_dan from '../pics/bosses/Part3/steely_dan.png';
 import vanilla_ice from '../pics/bosses/Part3/vanilla_ice.png';
 import dio_the_world from '../pics/bosses/Part3/dio_the_world.png';
+
+//Part 4
+import akira from '../pics/bosses/Part4/akira.png';
+import okuyasu from '../pics/bosses/Part4/okuyasu.png';
+import keicho from '../pics/bosses/Part4/keicho.png';
+import anjuro from '../pics/bosses/Part4/anjuro.png';
+import yukako from '../pics/bosses/Part4/yukako.png';
+import toshikazu from '../pics/bosses/Part4/toshikazu.png';
+import rohan from '../pics/bosses/Part4/rohan.png';
+import shigechi from '../pics/bosses/Part4/shigechi.png';
+import yoshikage_kira from '../pics/bosses/Part4/yoshikage_kira.png';
+import ken from '../pics/bosses/Part4/ken.png';
+import aya from '../pics/bosses/Part4/aya.png';
+import kosaku_kawajiri from '../pics/bosses/Part4/kosaku_kawajiri.png';
+import tonio from '../pics/bosses/Part4/tonio.png';
+import rat from '../pics/bosses/Part4/rat.png';
+import masazo from '../pics/bosses/Part4/masazo.png';
+import yuya from '../pics/bosses/Part4/yuya.png';
+import stray_cat from '../pics/bosses/Part4/stray_cat.png';
+import kira_bites_the_dust from '../pics/bosses/Part4/kira_bites_the_dust.png';
 
 export const bossList = [
     //Part 1
@@ -134,4 +157,78 @@ export const bossList = [
       name: "Dio (The World)",
       image: dio_the_world
     },
+
+    //Part 4
+    {
+      name: "Akira Otoishi",
+      image: akira
+    },
+    {
+      name: "Okuyasu Nijimura",
+      image: okuyasu
+    },
+    {
+      name: "Keicho Nijimura",
+      image: keicho
+    },
+    {
+      name: "Anjuro Katagiri",
+      image: anjuro
+    },
+    {
+      name: "Yukako Yamagishi",
+      image: yukako
+    },
+    {
+      name: "Toshikazu Hazamada",
+      image: toshikazu
+    },
+    {
+      name: "Rohan Kishibe",
+      image: rohan
+    },
+    {
+      name: "Shigekiyo Yangu",
+      image: shigechi
+    },
+    {
+      name: "Kira Yoshikage",
+      image: yoshikage_kira
+    },
+    {
+      name: "Ken Oyanagi",
+      image: ken
+    },
+    {
+      name: "Aya Tsuji",
+      image: aya
+    },
+    {
+      name: "Kosaku Kawajiri",
+      image: kosaku_kawajiri
+    },
+    {
+      name: "Tonio Trussardi",
+      image: tonio
+    },
+    {
+      name: "Rat",
+      image: rat
+    },
+    {
+      name: "Masazo Kinoto",
+      image: masazo
+    },
+    {
+      name: "Yuya Fungami",
+      image: yuya
+    },
+    {
+      name: "Stray Cat",
+      image: stray_cat
+    },
+    {
+      name: "Yoshikage Kira (Bites The Dust)",
+      image: kira_bites_the_dust
+    }
   ]

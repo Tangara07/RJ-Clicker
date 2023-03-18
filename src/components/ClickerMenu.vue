@@ -294,11 +294,10 @@ export default {
 .v-card{
   margin-left: 22%;
   margin-right: 22%;
-
 }
 
 .v-col{
-  padding-left: 10%;
+  padding-left: 7%;
 }
 
 .v-row{
@@ -309,11 +308,6 @@ export default {
 body{
   /*padding-top: 25%;*/
   justify-content: center;
-}
-
-@font-face {
-  font-family: 'SF_Fedora';
-  src: url('../assets/font/SF_Fedora.ttf');
 }
 
 .v-btn{
@@ -329,10 +323,6 @@ body{
 
 .v-application.v-theme--light.v-layout.v-layout--full-height.v-locale--is-ltr {
   background: transparent;
-}
-
-#app{
-  font-family: SF_Fedora; 
 }
 </style>
 
