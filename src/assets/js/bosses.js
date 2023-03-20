@@ -49,6 +49,27 @@ import yuya from '../pics/bosses/Part4/yuya.png';
 import stray_cat from '../pics/bosses/Part4/stray_cat.png';
 import kira_bites_the_dust from '../pics/bosses/Part4/kira_bites_the_dust.png';
 
+//Part 5
+import leaky_eye_luca from '../pics/bosses/Part5/leaky_eye_luca.png';
+import polpo from '../pics/bosses/Part5/polpo.png';
+import mario_zucchero from '../pics/bosses/Part5/mario_zucchero.png';
+import sale from '../pics/bosses/Part5/sale.png';
+import formaggio from '../pics/bosses/Part5/formaggio.png';
+import illuso from '../pics/bosses/Part5/illuso.png';
+import prosciutto from '../pics/bosses/Part5/prosciutto.png';
+import pesci from '../pics/bosses/Part5/pesci.png';
+import melone from '../pics/bosses/Part5/melone.png';
+import ghiaccio from '../pics/bosses/Part5/ghiaccio.png';
+import risotto_nero from '../pics/bosses/Part5/risotto_nero.png';
+import vinegar_doppio from '../pics/bosses/Part5/vinegar_doppio.png';
+import squalo from '../pics/bosses/Part5/squalo.png';
+import tiziano from '../pics/bosses/Part5/tiziano.png';
+import carne from '../pics/bosses/Part5/carne.png';
+import secco from '../pics/bosses/Part5/secco.png';
+import ciocolata from '../pics/bosses/Part5/ciocolata.png';
+import chariot_requiem from '../pics/bosses/Part5/chariot_requiem.png';
+import diavolo from '../pics/bosses/Part5/diavolo.png';
+
 export const bossList = [
     //Part 1
     {
@@ -230,5 +251,83 @@ export const bossList = [
     {
       name: "Yoshikage Kira (Bites The Dust)",
       image: kira_bites_the_dust
+    },
+
+    //Part 5
+    {
+      name: "Leaky-Eye Luca",
+      image: leaky_eye_luca
+    },
+    {
+      name: "Polpo",
+      image: polpo
+    },
+    {
+      name: "Mario Zucchero",
+      image: mario_zucchero
+    },
+    {
+      name: "Sale",
+      image: sale
+    },
+    {
+      name: "Formaggio",
+      image: formaggio
+    },
+    {
+      name: "Illuso",
+      image: illuso
+    },
+    {
+      name: "Prosciutto",
+      image: prosciutto
+    },
+    {
+      name: "Pesci",
+      image: pesci
+    },
+    {
+      name: "Melone",
+      image: melone
+    },
+    {
+      name: "Ghiaccio",
+      image: ghiaccio
+    },
+    {
+      name: "Risotto Nero",
+      image: risotto_nero
+    },
+    {
+      name: "Vinegar Doppio",
+      image: vinegar_doppio
+    },
+    {
+      name: "Squalo",
+      image: squalo
+    },
+    {
+      name: "Tiziano",
+      image: tiziano
+    },
+    {
+      name: "Carne",
+      image: carne
+    },
+    {
+      name: "Secco",
+      image: secco
+    },
+    {
+      name: "Cioccolata",
+      image: ciocolata
+    },
+    {
+      name: "Chariot Requiem",
+      image: chariot_requiem
+    },
+    {
+      name: "Diavolo",
+      image: diavolo
     }
   ]
