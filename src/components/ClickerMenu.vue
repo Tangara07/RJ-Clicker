@@ -15,7 +15,7 @@ export default {
       arrowUpdateCost: 20,
       splatinumUpdateCost: 1000,
 
-      theWorldUpdateCost: 10000,
+      josukeUpdateCost: 20000,
 
       bossHp: 100,
       deathCount: 0,
@@ -77,17 +77,12 @@ export default {
       }
     },
 
-    increaseTheWorldPerSecond(){
-      if (this.score >= this.theWorldUpdateCost){
+    increaseJosukePerSecond(){
+      if (this.score >= this.josukeUpdateCost){
         clearInterval(this.interval);
         this.addSize += 500;
-        this.perSecond += 300;
-        this.score -= this.theWorldUpdateCost;
-        this.theWorldUpdateCost = parseInt(this.theWorldUpdateCost * 5);
-    
-        if (this.perSecond > 0) {
-          this.startInterval();
-        }
+        this.score -= this.josukeUpdateCost;
+        this.josukeUpdateCost = parseInt(this.josukeUpdateCost * 5);
       }
     },
 
@@ -259,16 +254,18 @@ export default {
               </v-img>
             </v-avatar>
         </v-col>
-      
-        <v-col v-show="deathCount >= 100">
-          <v-btn class="btn-theworld" @click="increaseTheWorldPerSecond()" rounded="pill" variant="outlined">The World attack: +500 Damage per Hit and +300 Damage per Second</v-btn>
+        
+        <v-spacer></v-spacer>
+
+        <v-col v-show="deathCount >= 75">
+          <v-btn class="btn-josuke" @click="increaseJosukePerSecond()" rounded="pill" variant="outlined">Crazy Diamond atack: +500 Damage per Hit</v-btn>
           <v-spacer></v-spacer>
-          <span class="text-wrap">Cost: {{ theWorldUpdateCost }}</span>
+          <span class="text-wrap">Cost: {{ josukeUpdateCost }}</span>
           <v-spacer></v-spacer>
           <v-avatar size="150">
             <v-img 
-              src="../assets/pics/upgrades/theworld.png"
-              alt="TheWorld">
+              src="../assets/pics/upgrades/josuke.png"
+              alt="Josuke">
             </v-img>
           </v-avatar>
         </v-col>
@@ -297,7 +294,7 @@ export default {
 }
 
 .v-col{
-  padding-left: 7%;
+  padding-left: 6%;
 }
 
 .v-row{
