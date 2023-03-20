@@ -22,6 +22,8 @@ export default {
       interval: null,
       bossCount: 1,
 
+      overlay: false,
+
       index: 0,  
 
       bossList: bossList
@@ -149,7 +151,7 @@ export default {
 
 <template>
   <v-app>
-    <v-card class="rounded-card" title="RJ-Clicker!" variant="outlined">
+    <v-card class="rounded-card cardMarg" title="RJ-Clicker!" variant="outlined">
       <v-row>
 
         <v-col>
@@ -188,86 +190,89 @@ export default {
       </v-row>
     </v-card> 
     
-    <v-card class="rounded-card" variant="outlined">
+    <v-card class="rounded-card cardMarg" variant="outlined">
       <v-row>
 
         <v-col>
           <v-btn class="btn-hit" @click="addToScore()" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
         </v-col>
 
-        <v-spacer></v-spacer>
-
         <v-col>
-          <v-btn class="btn-hamon" @click="this.increaseHitDamage()" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
-          <v-spacer></v-spacer>          
-          <span >Cost: {{ hamonUpdateCost }}</span>
-          <v-spacer></v-spacer>
-          <v-avatar size="150">
-            <v-img 
-              src="../assets/pics/upgrades/hamon.png"
-              alt="HAMON">
-            </v-img>
-          </v-avatar>
-        </v-col>
+          <v-btn @click="overlay = !overlay" rounded="pill" variant="outlined">Menu
+            <v-overlay v-model="overlay" class="align-center justify-center">
 
-        <v-spacer></v-spacer>
+              <v-card class="rounded-card ovCard" width="600" variant="outlined">
+              <v-row>
+              
+              <v-col>
+                <v-btn class="btn-hamon" @click="this.increaseHitDamage()" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
+                <v-spacer></v-spacer>          
+                <span >Cost: {{ hamonUpdateCost }}</span>
+                <v-spacer></v-spacer>
+                <v-avatar size="150">
+                  <v-img 
+                    src="../assets/pics/upgrades/hamon.png"
+                    alt="HAMON">
+                  </v-img>
+                </v-avatar>
+              </v-col>
       
-        <v-col>
-          <v-btn class="btn-arrow" @click="increaseArrowPerSecond()" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
-          <v-spacer></v-spacer>
-          <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
-          <v-spacer></v-spacer>
-          <v-avatar size="150">
-            <v-img 
-              src="../assets/pics/upgrades/arrow.png"
-              alt="ARROW">
-              </v-img>
-          </v-avatar>
-        </v-col>
-
-        <v-spacer></v-spacer>
+              <v-col>
+                <v-btn class="btn-arrow" @click="increaseArrowPerSecond()" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
+                <v-spacer></v-spacer>
+                <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
+                <v-spacer></v-spacer>
+                <v-avatar size="150">
+                  <v-img 
+                    src="../assets/pics/upgrades/arrow.png"
+                    alt="ARROW">
+                  </v-img>
+                </v-avatar>
+              </v-col>
        
-        <v-col v-show="deathCount >= 20">
-          <v-btn class="btn-fool" @click="increaseFoolDamage()" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
-          <v-spacer></v-spacer>
-          <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
-          <v-spacer></v-spacer>
-          <v-avatar size="150">
-              <v-img 
-                src="../assets/pics/upgrades/iggi.png"
-                alt="TheFool">
-              </v-img>
-            </v-avatar>
-        </v-col>
+              <v-col v-show="deathCount >= 20">
+                <v-btn class="btn-fool" @click="increaseFoolDamage()" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
+                <v-spacer></v-spacer>
+                <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
+                <v-spacer></v-spacer>
+                <v-avatar size="150">
+                  <v-img 
+                    src="../assets/pics/upgrades/iggi.png"
+                    alt="TheFool">
+                  </v-img>
+                </v-avatar>
+              </v-col>
       
-        <v-spacer></v-spacer>
-      
-        <v-col v-show="deathCount >= 50">
-          <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond()" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
-          <v-spacer></v-spacer>
-          <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
-          <v-spacer></v-spacer>
-          <v-avatar size="150">
-              <v-img 
-                src="../assets/pics/upgrades/star_platinum.png"
-                alt="StarPlatinum">
-              </v-img>
-            </v-avatar>
-        </v-col>
-        
-        <v-spacer></v-spacer>
+              <v-col v-show="deathCount >= 50">
+                <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond()" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
+                <v-spacer></v-spacer>
+                <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
+                <v-spacer></v-spacer>
+                <v-avatar size="150">
+                  <v-img 
+                    src="../assets/pics/upgrades/star_platinum.png"
+                    alt="StarPlatinum">
+                  </v-img>
+                </v-avatar>
+              </v-col>
 
-        <v-col v-show="deathCount >= 75">
-          <v-btn class="btn-josuke" @click="increaseJosukePerSecond()" rounded="pill" variant="outlined">Crazy Diamond atack: +500 Damage per Hit</v-btn>
-          <v-spacer></v-spacer>
-          <span class="text-wrap">Cost: {{ josukeUpdateCost }}</span>
-          <v-spacer></v-spacer>
-          <v-avatar size="150">
-            <v-img 
-              src="../assets/pics/upgrades/josuke.png"
-              alt="Josuke">
-            </v-img>
-          </v-avatar>
+              <v-col v-show="deathCount >= 75">
+                <v-btn class="btn-josuke" @click="increaseJosukePerSecond()" rounded="pill" variant="outlined">Crazy Diamond atack: +500 Damage per Hit</v-btn>
+                <v-spacer></v-spacer>
+                <span class="text-wrap">Cost: {{ josukeUpdateCost }}</span>
+                <v-spacer></v-spacer>
+                <v-avatar size="150">
+                  <v-img 
+                    src="../assets/pics/upgrades/josuke.png"
+                    alt="Josuke">
+                  </v-img>
+                </v-avatar>
+              </v-col>
+            </v-row>
+            </v-card>
+
+            </v-overlay>
+          </v-btn>
         </v-col>
       
       </v-row>
@@ -288,7 +293,7 @@ export default {
   text-align: center;
 }
 
-.v-card{
+.cardMarg{
   margin-left: 22%;
   margin-right: 22%;
 }
@@ -316,6 +321,14 @@ body{
     border-radius:50px;
     background-color: #333333;
     color: #ffffff;
+}
+
+.ovCard{
+  padding-right: 1%;
+}
+
+.v-overlay{
+  overflow-y: visible !important;
 }
 
 .v-application.v-theme--light.v-layout.v-layout--full-height.v-locale--is-ltr {

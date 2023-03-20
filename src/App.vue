@@ -24,6 +24,10 @@ export default {
 
 <style>
 
+html { 
+  overflow-y: hidden !important 
+}
+
 body{
   background: url('./assets/pics/sbr.jpg')no-repeat center center fixed !important; 
   background-size: cover !important;
@@ -34,7 +38,7 @@ body{
   src: url('./assets/font/SF_Fedora.ttf');
 }
 
-.v-application{
+.v-card{
   font-family: SF_Fedora; 
 }
 
