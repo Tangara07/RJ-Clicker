@@ -182,7 +182,10 @@ export default {
 
         <v-col>
           <v-avatar size="250" rounded="0">
-            <v-img v-bind:src="switchBoss"></v-img>
+            <v-img 
+              @click="addToScore()"
+              v-bind:src="switchBoss">
+            </v-img>
           </v-avatar>
         </v-col>
 
