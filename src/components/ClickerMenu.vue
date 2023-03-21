@@ -39,7 +39,7 @@ export default {
         incrCost: 1.75
       },
       {
-        name: "Arrow",
+        name: "Star Platinum",
         cost: 1000,
         dmg: 100,
         incrCost: 3
@@ -74,7 +74,7 @@ export default {
       }
     },
 
-    increaseArrowPerSecond(index){
+    increasePerSecond(index){
       if (this.score >= this.upgradesPerSecond[index].cost){
         clearInterval(this.interval);
         this.perSecond += this.upgradesPerSecond[index].dmg;
@@ -217,7 +217,7 @@ export default {
               </v-col>
       
               <v-col>
-                <v-btn class="btn-arrow" @click="increaseArrowPerSecond()" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
+                <v-btn class="btn-arrow" @click="increasePerSecond(0)" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ upgradesPerSecond[0].cost }}</span>
                 <v-spacer></v-spacer>
@@ -230,7 +230,7 @@ export default {
               </v-col>
        
               <v-col v-show="deathCount >= 20">
-                <v-btn class="btn-fool" @click="increaseHitDamage(100, 2)" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
+                <v-btn class="btn-fool" @click="increaseHitDamage(1)" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
                 <v-spacer></v-spacer>
@@ -243,7 +243,7 @@ export default {
               </v-col>
       
               <v-col v-show="deathCount >= 50">
-                <v-btn class="btn-splatinum" @click="increaseSPlatinumPerSecond()" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
+                <v-btn class="btn-splatinum" @click="increasePerSecond(1)" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
                 <v-spacer></v-spacer>
@@ -256,7 +256,7 @@ export default {
               </v-col>
 
               <v-col v-show="deathCount >= 75">
-                <v-btn class="btn-josuke" @click="increaseJosukePerSecond()" rounded="pill" variant="outlined">Crazy Diamond atack: +500 Damage per Hit</v-btn>
+                <v-btn class="btn-josuke" @click="increasePerHit(2)" rounded="pill" variant="outlined">Crazy Diamond atack: +500 Damage per Hit</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ josukeUpdateCost }}</span>
                 <v-spacer></v-spacer>
