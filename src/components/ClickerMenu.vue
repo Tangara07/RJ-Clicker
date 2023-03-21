@@ -1,6 +1,6 @@
 <script>
 
-import {bossList} from '../assets/js/bosses'
+import bossList from '../assets/js/bosses'
 
 export default {
   data(){
@@ -9,13 +9,42 @@ export default {
       addSize: 1,
       perSecond: 0,
 
-      hamonUpdateCost: 10,
-      foolUpdateCost: 2000,
+      upgradesPerHit:[
 
-      arrowUpdateCost: 20,
-      splatinumUpdateCost: 1000,
+      {
+        name: "Hamon",
+        cost: 10,
+        dmg: 1,
+        incrCost: 1.25
+      },
+      {
+        name: "Fool",
+        cost: 2000,
+        dmg: 100,
+        incrCost: 3.15
+      },
+      {
+        name: "Josuke",
+        cost: 20000,
+        dmg: 300,
+        incrCost: 5
+      },
+      ],
 
-      josukeUpdateCost: 20000,
+      upgradesPerSecond: [
+      {    
+        name: "Arrow",
+        cost: 20,
+        dmg: 1,
+        incrCost: 1.75
+      },
+      {
+        name: "Arrow",
+        cost: 1000,
+        dmg: 100,
+        incrCost: 3
+      },
+      ],
 
       bossHp: 100,
       deathCount: 0,
@@ -37,54 +66,24 @@ export default {
       this.bossKillClick();
     },
 
-    increaseHitDamage(){
-      if(this.score >= this.hamonUpdateCost){
-        this.score -= this.hamonUpdateCost;
-        this.addSize++;
-        this.hamonUpdateCost = parseInt(this.hamonUpdateCost * 1.25);
+    increaseHitDamage(index){
+      if(this.score >= this.upgradesPerHit[index].cost){
+        this.score -= this.upgradesPerHit[index].cost;
+        this.addSize += this.upgradesPerHit[index].dmg;
+        this.upgradesPerHit[index].cost = parseInt(this.upgradesPerHit[index].cost * this.upgradesPerHit[index].incrCost);
       }
     },
 
-    increaseFoolDamage(){
-      if(this.score >= this.foolUpdateCost){
-        this.score -= this.foolUpdateCost;
-        this.addSize += 100;
-        this.foolUpdateCost = parseInt(this.foolUpdateCost * 3.15);
-      }
-    },
-
-    increaseArrowPerSecond(){
-      if (this.score >= this.arrowUpdateCost){
+    increaseArrowPerSecond(index){
+      if (this.score >= this.upgradesPerSecond[index].cost){
         clearInterval(this.interval);
-        this.perSecond++;
-        this.score -= this.arrowUpdateCost;
-        this.arrowUpdateCost = parseInt(this.arrowUpdateCost * 1.75);
+        this.perSecond += this.upgradesPerSecond[index].dmg;
+        this.score -= this.upgradesPerSecond[index].cost;
+        this.upgradesPerSecond[index].cost = parseInt(this.upgradesPerSecond[index].cost * this.upgradesPerSecond[index].incrCost);
     
         if (this.perSecond > 0) {
           this.startInterval();
         }
-      }
-    },
-
-    increaseSPlatinumPerSecond(){
-      if (this.score >= this.splatinumUpdateCost){
-        clearInterval(this.interval);
-        this.perSecond += 100;
-        this.score -= this.splatinumUpdateCost;
-        this.splatinumUpdateCost = parseInt(this.splatinumUpdateCost * 3);
-    
-        if (this.perSecond > 0) {
-          this.startInterval();
-        }
-      }
-    },
-
-    increaseJosukePerSecond(){
-      if (this.score >= this.josukeUpdateCost){
-        clearInterval(this.interval);
-        this.addSize += 500;
-        this.score -= this.josukeUpdateCost;
-        this.josukeUpdateCost = parseInt(this.josukeUpdateCost * 5);
       }
     },
 
@@ -205,9 +204,9 @@ export default {
               <v-row>
               
               <v-col>
-                <v-btn class="btn-hamon" @click="this.increaseHitDamage()" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
+                <v-btn class="btn-hamon" @click="this.increaseHitDamage(0)" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
                 <v-spacer></v-spacer>          
-                <span >Cost: {{ hamonUpdateCost }}</span>
+                <span >Cost: {{ upgradesPerHit[0].cost }}</span>
                 <v-spacer></v-spacer>
                 <v-avatar size="150">
                   <v-img 
@@ -220,7 +219,7 @@ export default {
               <v-col>
                 <v-btn class="btn-arrow" @click="increaseArrowPerSecond()" rounded="pill" variant="outlined">+ 1 on Damage per Second</v-btn>
                 <v-spacer></v-spacer>
-                <span class="text-wrap">Cost: {{ arrowUpdateCost }}</span>
+                <span class="text-wrap">Cost: {{ upgradesPerSecond[0].cost }}</span>
                 <v-spacer></v-spacer>
                 <v-avatar size="150">
                   <v-img 
@@ -231,7 +230,7 @@ export default {
               </v-col>
        
               <v-col v-show="deathCount >= 20">
-                <v-btn class="btn-fool" @click="increaseFoolDamage()" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
+                <v-btn class="btn-fool" @click="increaseHitDamage(100, 2)" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
                 <v-spacer></v-spacer>

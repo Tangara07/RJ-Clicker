@@ -70,7 +70,7 @@ import ciocolata from '../pics/bosses/Part5/ciocolata.png';
 import chariot_requiem from '../pics/bosses/Part5/chariot_requiem.png';
 import diavolo from '../pics/bosses/Part5/diavolo.png';
 
-export const bossList = [
+export default [
     //Part 1
     {
       name: "Dio",
