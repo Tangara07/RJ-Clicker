@@ -1,3 +1,4 @@
+<script>
 //Part 1
 import dio from '../pics/bosses/Part1/dio.png';
 import speedwagon from '../pics/bosses/Part1/speedwagon.png';
@@ -74,31 +75,45 @@ export default [
     //Part 1
     {
       name: "Dio",
-      image: dio
+      image: dio,
+      hp: 100,
+      reward: 300
     },
     {
       name: "Speedwagon",
-      image: speedwagon
+      image: speedwagon,
+      hp: 150,
+      reward: 300
     },
     {
       name: "Wang Chan",
-      image: wang_chan
+      image: wang_chan,
+      hp: 200,
+      reward: 300
     },
     {
       name: "Jack the Ripper",
-      image: jack_the_ripper
+      image: jack_the_ripper,
+      hp: 250,
+      reward: 300
     },
     {
       name: "Bruford",
-      image: bruford
+      image: bruford,
+      hp: 400,
+      reward: 300
     },
     {
       name: "Tarkus",
-      image: tarkus
+      image: tarkus,
+      hp: 500,
+      reward: 300
     },
     {
       name: "Vampire Dio",
-      image: dio_vampire
+      image: dio_vampire,
+      hp: 1000,
+      reward: 300
     },
     //Part 2
     {
@@ -331,3 +346,4 @@ export default [
       image: diavolo
     }
   ]
+</script>
