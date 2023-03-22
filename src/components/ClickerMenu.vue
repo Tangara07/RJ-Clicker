@@ -188,18 +188,11 @@ export default {
             </v-img>
           </v-avatar>
         </v-col>
+    </v-row>
 
-      </v-row>
-    </v-card> 
-    
-    <v-card class="rounded-card cardMarg" variant="outlined">
-      <v-row>
+    <v-row>
 
-        <v-col>
-          <v-btn class="btn-hit" @click="addToScore()" rounded="pill" variant="outlined">Hit {{ addSize }} HP</v-btn>
-        </v-col>
-
-        <v-col>
+    <v-col>
           <v-btn @click="overlay = !overlay" rounded="pill" variant="outlined">Menu
             <v-overlay v-model="overlay" class="align-center justify-center">
 
@@ -276,9 +269,12 @@ export default {
             </v-overlay>
           </v-btn>
         </v-col>
-      
+
+        <v-col>
+          <span class="pink" >Hit {{ addSize }} HP</span>
+        </v-col>
       </v-row>
-    </v-card> 
+    </v-card>  
   </v-app>
   </template>
 
