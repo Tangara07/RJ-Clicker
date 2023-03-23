@@ -1,50 +1,15 @@
 <script>
 
-import bossList from '../assets/js/bosses.vue'
+import bossList from '../assets/vue/bosses.vue'
+import upgradesPerHit from '../assets/vue/upgradesPerHit.vue'
+import upgradesPerSecond from '../assets/vue/upgradesPerSecond.vue'
 
 export default {
   data(){
     return{
       score: 0,
       addSize: 1,
-      perSecond: 0,
-
-      upgradesPerHit:[
-
-      {
-        name: "Hamon",
-        cost: 10,
-        dmg: 1,
-        incrCost: 1.25
-      },
-      {
-        name: "Fool",
-        cost: 2000,
-        dmg: 100,
-        incrCost: 3.15
-      },
-      {
-        name: "Josuke",
-        cost: 20000,
-        dmg: 300,
-        incrCost: 5
-      },
-      ],
-
-      upgradesPerSecond: [
-      {    
-        name: "Arrow",
-        cost: 20,
-        dmg: 1,
-        incrCost: 1.75
-      },
-      {
-        name: "Star Platinum",
-        cost: 1000,
-        dmg: 100,
-        incrCost: 3
-      },
-      ],
+      perSecond: 0,   
 
       deathCount: 0,
       interval: null,
@@ -54,8 +19,9 @@ export default {
 
       index: 0,  
 
-      bossList: bossList
-
+      bossList: bossList,
+      upgradesPerHit: upgradesPerHit,
+      upgradesPerSecond: upgradesPerSecond
     };
   },
 
@@ -211,7 +177,7 @@ export default {
                 </v-avatar>
               </v-col>
        
-              <v-col v-show="deathCount >= 20">
+              <v-col v-show="deathCount >= 10">
                 <v-btn class="btn-fool" @click="increaseHitDamage(1)" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
@@ -224,7 +190,7 @@ export default {
                 </v-avatar>
               </v-col>
       
-              <v-col v-show="deathCount >= 50">
+              <v-col v-show="deathCount >= 20">
                 <v-btn class="btn-splatinum" @click="increasePerSecond(1)" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
@@ -237,7 +203,7 @@ export default {
                 </v-avatar>
               </v-col>
 
-              <v-col v-show="deathCount >= 75">
+              <v-col v-show="deathCount >= 30">
                 <v-btn class="btn-josuke" @click="increasePerHit(2)" rounded="pill" variant="outlined">Crazy Diamond atack: +500 Damage per Hit</v-btn>
                 <v-spacer></v-spacer>
                 <span class="text-wrap">Cost: {{ josukeUpdateCost }}</span>
