@@ -95,255 +95,361 @@ export default [
       name: "Jack the Ripper",
       image: jack_the_ripper,
       hp: 250,
-      reward: 300
+      reward: 400
     },
     {
       name: "Bruford",
       image: bruford,
       hp: 400,
-      reward: 300
+      reward: 500
     },
     {
       name: "Tarkus",
       image: tarkus,
       hp: 500,
-      reward: 300
+      reward: 500
     },
     {
       name: "Vampire Dio",
       image: dio_vampire,
       hp: 1000,
-      reward: 300
+      reward: 1000
     },
     //Part 2
     {
       name: "Straizo",
-      image: straizo
+      image: straizo,
+      hp: 1500,
+      reward: 500
     },
     {
       name: "Santana",
-      image: santana
+      image: santana,
+      hp: 2000,
+      reward: 500
     },
     {
       name: "Wammu",
-      image: wammu
+      image: wammu,
+      hp: 3000,
+      reward: 750
     },
     {
       name: "AC/DC",
-      image: acdc
+      image: acdc,
+      hp: 4000,
+      reward: 1000
     },
     {
       name: "Kars",
-      image: kars
+      image: kars,
+      hp: 7000,
+      reward: 2000
     },
     //Part 3
     {
-      name: "Kars",
-      image: kars
-    },
-    {
       name: "Tower of Grey",
-      image: tower
+      image: tower,
+      hp: 5000,
+      reward: 1000
     },
     {
       name: "Capitan Tennille",
-      image: cap_tennille
+      image: cap_tennille,
+      hp: 5500,
+      reward: 1000
     },
     {
       name: "Forever",
-      image: forever
+      image: forever,
+      hp: 6000,
+      reward: 1000
     },
     {
       name: "Devo the Cursed",
-      image: devo_the_cursed
+      image: devo_the_cursed,
+      hp: 7000,
+      reward: 1500
     },
     {
       name: "Rubber Soul",
-      image: rubber_soul
+      image: rubber_soul,
+      hp: 7000,
+      reward: 1500
     },
     {
       name: "J Geil",
-      image: j_geil
+      image: j_geil,
+      hp: 10000,
+      reward: 3000
     },
     {
       name: "Hol Horse",
-      image: hol_horse
+      image: hol_horse,
+      hp: 7500,
+      reward: 2000
     },
     {
       name: "Nena (Empress)",
-      image: nena_empress
+      image: nena_empress,
+      hp: 1000,
+      reward: 1000
     },
     {
       name: "ZZ",
-      image: zz
+      image: zz,
+      hp: 2000,
+      reward: 1500
     },
     {
       name: "Enya Geil",
-      image: enya_geil
+      image: enya_geil,
+      hp: 8000,
+      reward: 2500
     },
     {
       name: "Steely Dan",
-      image: steely_dan
+      image: steely_dan,
+      hp: 5000,
+      reward: 1500
     },
     {
       name: "Vanilla Ice",
-      image: vanilla_ice
+      image: vanilla_ice,
+      hp: 10000,
+      reward: 3000
     },
     {
       name: "Dio (The World)",
-      image: dio_the_world
+      image: dio_the_world,
+      hp: 30000,
+      reward: 5000
     },
 
     //Part 4
     {
       name: "Akira Otoishi",
-      image: akira
+      image: akira,
+      hp: 5000,
+      reward: 3000
     },
     {
       name: "Okuyasu Nijimura",
-      image: okuyasu
+      image: okuyasu,
+      hp: 6000,
+      reward: 3000
     },
     {
       name: "Keicho Nijimura",
-      image: keicho
+      image: keicho,
+      hp: 6000,
+      reward: 2500
     },
     {
       name: "Anjuro Katagiri",
-      image: anjuro
+      image: anjuro,
+      hp: 8000,
+      reward: 4000
     },
     {
       name: "Yukako Yamagishi",
-      image: yukako
+      image: yukako,
+      hp: 5000,
+      reward: 1000
     },
     {
       name: "Toshikazu Hazamada",
-      image: toshikazu
+      image: toshikazu,
+      hp: 6000,
+      reward: 2000
     },
     {
       name: "Rohan Kishibe",
-      image: rohan
+      image: rohan,
+      hp: 15000,
+      reward: 5000
     },
     {
       name: "Shigekiyo Yangu",
-      image: shigechi
+      image: shigechi,
+      hp: 7000,
+      reward: 3000
     },
     {
       name: "Kira Yoshikage",
-      image: yoshikage_kira
+      image: yoshikage_kira,
+      hp: 20000,
+      reward: 7500
     },
     {
       name: "Ken Oyanagi",
-      image: ken
+      image: ken,
+      hp: 7000,
+      reward: 3000
     },
     {
       name: "Aya Tsuji",
-      image: aya
+      image: aya,
+      hp: 1000,
+      reward: 500
     },
     {
       name: "Kosaku Kawajiri",
-      image: kosaku_kawajiri
+      image: kosaku_kawajiri,
+      hp: 35000,
+      reward: 10000
     },
     {
       name: "Tonio Trussardi",
-      image: tonio
+      image: tonio,
+      hp: 1000,
+      reward: 100
     },
     {
       name: "Rat",
-      image: rat
+      image: rat,
+      hp: 4000,
+      reward: 1500
     },
     {
       name: "Masazo Kinoto",
-      image: masazo
+      image: masazo,
+      hp: 5000,
+      reward: 2000
     },
     {
       name: "Yuya Fungami",
-      image: yuya
+      image: yuya,
+      hp: 6000,
+      reward: 2500
     },
     {
       name: "Stray Cat",
-      image: stray_cat
+      image: stray_cat,
+      hp: 10000,
+      reward: 5000
     },
     {
       name: "Yoshikage Kira (Bites The Dust)",
-      image: kira_bites_the_dust
+      image: kira_bites_the_dust,
+      hp: 50000,
+      reward: 12000
     },
 
     //Part 5
     {
       name: "Leaky-Eye Luca",
-      image: leaky_eye_luca
+      image: leaky_eye_luca,
+      hp: 10000,
+      reward: 6000
     },
     {
       name: "Polpo",
-      image: polpo
+      image: polpo,
+      hp: 9000,
+      reward: 5500
     },
     {
       name: "Mario Zucchero",
-      image: mario_zucchero
+      image: mario_zucchero,
+      hp: 11000,
+      reward: 7000
     },
     {
       name: "Sale",
-      image: sale
+      image: sale,
+      hp: 13000,
+      reward: 8000
     },
     {
       name: "Formaggio",
-      image: formaggio
+      image: formaggio,
+      hp: 13000,
+      reward: 9000
     },
     {
       name: "Illuso",
-      image: illuso
+      image: illuso,
+      hp: 14000,
+      reward: 9000
     },
     {
       name: "Prosciutto",
-      image: prosciutto
+      image: prosciutto,
+      hp: 15000,
+      reward: 10000
     },
     {
       name: "Pesci",
-      image: pesci
+      image: pesci,
+      hp: 15000,
+      reward: 10000
     },
     {
       name: "Melone",
-      image: melone
+      image: melone,
+      hp: 17000,
+      reward: 12000
     },
     {
       name: "Ghiaccio",
-      image: ghiaccio
+      image: ghiaccio,
+      hp: 17000,
+      reward: 12000
     },
     {
       name: "Risotto Nero",
-      image: risotto_nero
+      image: risotto_nero,
+      hp: 20000,
+      reward: 15000
     },
     {
       name: "Vinegar Doppio",
-      image: vinegar_doppio
+      image: vinegar_doppio,
+      hp: 50000,
+      reward: 25000
     },
     {
       name: "Squalo",
-      image: squalo
+      image: squalo,
+      hp: 22000,
+      reward: 17000
     },
     {
       name: "Tiziano",
-      image: tiziano
+      image: tiziano,
+      hp: 22000,
+      reward: 17000
     },
     {
       name: "Carne",
-      image: carne
+      image: carne,
+      hp: 25000,
+      reward: 18000
     },
     {
       name: "Secco",
-      image: secco
+      image: secco,
+      hp: 40000,
+      reward: 25000
     },
     {
       name: "Cioccolata",
-      image: ciocolata
+      image: ciocolata,
+      hp: 50000,
+      reward: 30000
     },
     {
       name: "Chariot Requiem",
-      image: chariot_requiem
+      image: chariot_requiem,
+      hp: 100000,
+      reward: 50000
     },
     {
       name: "Diavolo",
-      image: diavolo
+      image: diavolo,
+      hp: 250000,
+      reward: 100000
     }
   ]
 </script>

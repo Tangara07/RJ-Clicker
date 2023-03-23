@@ -1,6 +1,6 @@
 <script>
 
-import bossList from '../assets/js/bosses'
+import bossList from '../assets/js/bosses.vue'
 
 export default {
   data(){
@@ -46,7 +46,6 @@ export default {
       },
       ],
 
-      bossHp: 100,
       deathCount: 0,
       interval: null,
       bossCount: 1,
@@ -95,43 +94,30 @@ export default {
     },
 
     bossKillClick(){
-      this.bossHp -= this.addSize;
+      this.bossList[this.index].hp -= this.addSize;
       this.switchBossIdx();
     },
 
     bossKillTime(){
-      this.bossHp -= this.perSecond;
+      this.bossList[this.index].hp -= this.perSecond;
       this.switchBossIdx();
     },
 
     switchBossIdx() {
-      if (this.bossHp <= 0){
+
+      if (this.bossList[this.index].hp <= 0){
+        this.deathCount++;
+
+        this.score += this.bossList[this.index].reward;
+      }
+
+      if (this.bossList[this.index].hp <= 0){
         this.index++;
 
         if (this.index > this.bossList.length - 1){
           this.index = 0;
         }
-     }
-
-     if (this.bossHp <= 0){
-        this.deathCount++;
-
-        if(this.deathCount < 20){
-          this.score += 500;
-        }
-        else if (this.deathCount >= 20){
-          this.score += 1000;
-        }
-        else if (this.deathCount >= 40){
-          this.score += 2000;
-        }
-        else if (this.deathCount >= 60){
-          this.score += 5000;
-        }
-        
-        this.bossHp = 100 * this.deathCount;
-      }
-
+     }   
     }
   },
 
@@ -176,7 +162,7 @@ export default {
           </v-row>
 
           <v-row>
-            <span class="pink">HP: {{ bossHp }}</span>
+            <span class="pink">HP: {{ bossList[this.index].hp }}</span>
           </v-row>
         </v-col>
 
