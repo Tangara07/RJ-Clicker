@@ -21,7 +21,11 @@ export default {
 
       bossList: bossList,
       upgradesPerHit: upgradesPerHit,
-      upgradesPerSecond: upgradesPerSecond
+      upgradesPerSecond: upgradesPerSecond,
+
+      info: false,
+
+      showHide: "Show"
     };
   },
 
@@ -84,7 +88,17 @@ export default {
           this.index = 0;
         }
      }   
+    },
+
+    showInfo(){
+      if (this.info) {
+        this.info = false
+        this.showHide = "Show"
+      } else {
+        this.info = true
+        this.showHide = "Hide"
     }
+  },
   },
 
   computed: {
@@ -148,20 +162,23 @@ export default {
           <v-btn @click="overlay = !overlay" rounded="pill" variant="outlined">Menu
             <v-overlay v-model="overlay" class="align-center justify-center">
 
+              <v-btn class="btn-info" @click="showInfo()" rounded="pill" variant="outlined">{{showHide}} Info</v-btn> 
+
               <v-card class="rounded-card ovCard" width="600" variant="outlined">
               <v-row>
-              
               <v-col>
                 <v-btn class="btn-hamon" @click="this.increaseHitDamage(0)" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
                 <v-spacer></v-spacer>          
                 <span >Cost: {{ upgradesPerHit[0].cost }}</span>
                 <v-spacer></v-spacer>
                 <v-avatar size="150">
-                  <v-img 
+                  <v-img
                     src="../assets/pics/upgrades/hamon.png"
                     alt="HAMON">
                   </v-img>
                 </v-avatar>
+                <v-spacer></v-spacer>
+                <span v-if="info" class="upgradeText">{{ upgradesPerHit[0].info }}</span>
               </v-col>
       
               <v-col>
@@ -170,17 +187,19 @@ export default {
                 <span class="text-wrap">Cost: {{ upgradesPerSecond[0].cost }}</span>
                 <v-spacer></v-spacer>
                 <v-avatar size="150">
-                  <v-img 
-                    src="../assets/pics/upgrades/arrow.png"
-                    alt="ARROW">
-                  </v-img>
+                    <v-img  
+                      src="../assets/pics/upgrades/arrow.png"
+                      alt="ARROW">
+                    </v-img>
                 </v-avatar>
+                <v-spacer></v-spacer>
+                <span v-if="info" class="upgradeText">{{ upgradesPerSecond[0].info }}</span>
               </v-col>
        
               <v-col v-show="deathCount >= 10">
                 <v-btn class="btn-fool" @click="increaseHitDamage(1)" rounded="pill" variant="outlined" >The Fool attack: +100 Damage per Hit</v-btn>
                 <v-spacer></v-spacer>
-                <span class="text-wrap">Cost: {{ foolUpdateCost }}</span>
+                <span class="text-wrap">Cost: {{ upgradesPerHit[1].cost }}</span>
                 <v-spacer></v-spacer>
                 <v-avatar size="150">
                   <v-img 
@@ -188,12 +207,14 @@ export default {
                     alt="TheFool">
                   </v-img>
                 </v-avatar>
+                <v-spacer></v-spacer>
+                <span v-if="info" class="upgradeText">{{ upgradesPerHit[1].info }}</span>
               </v-col>
       
               <v-col v-show="deathCount >= 20">
                 <v-btn class="btn-splatinum" @click="increasePerSecond(1)" rounded="pill" variant="outlined">Star Platinum attack: +100 Damage per Second</v-btn>
                 <v-spacer></v-spacer>
-                <span class="text-wrap">Cost: {{ splatinumUpdateCost }}</span>
+                <span class="text-wrap">Cost: {{ upgradesPerSecond[1].cost }}</span>
                 <v-spacer></v-spacer>
                 <v-avatar size="150">
                   <v-img 
@@ -201,12 +222,14 @@ export default {
                     alt="StarPlatinum">
                   </v-img>
                 </v-avatar>
+                <v-spacer></v-spacer>
+                <span v-if="info" class="upgradeText">{{ upgradesPerSecond[1].info }}</span>
               </v-col>
 
               <v-col v-show="deathCount >= 30">
                 <v-btn class="btn-josuke" @click="increasePerHit(2)" rounded="pill" variant="outlined">Crazy Diamond atack: +500 Damage per Hit</v-btn>
                 <v-spacer></v-spacer>
-                <span class="text-wrap">Cost: {{ josukeUpdateCost }}</span>
+                <span class="text-wrap">Cost: {{ upgradesPerHit[2].cost }}</span>
                 <v-spacer></v-spacer>
                 <v-avatar size="150">
                   <v-img 
@@ -214,6 +237,8 @@ export default {
                     alt="Josuke">
                   </v-img>
                 </v-avatar>
+                <v-spacer></v-spacer>
+                <span v-if="info" class="upgradeText">{{ upgradesPerHit[2].info }}</span>
               </v-col>
             </v-row>
             </v-card>
@@ -231,6 +256,14 @@ export default {
   </template>
 
 <style>
+
+.btn-info{
+  font-family: SF_Fedora; 
+}
+
+.upgradeText{
+  font-size: small;
+}
 
 .pink{
   color: #EC008C !important;
