@@ -22,10 +22,6 @@ export default {
       bossList: bossList,
       upgradesPerHit: upgradesPerHit,
       upgradesPerSecond: upgradesPerSecond,
-
-      info: false,
-
-      showHide: "Show"
     };
   },
 
@@ -89,16 +85,6 @@ export default {
         }
      }   
     },
-
-    showInfo(){
-      if (this.info) {
-        this.info = false
-        this.showHide = "Show"
-      } else {
-        this.info = true
-        this.showHide = "Hide"
-    }
-  },
   },
 
   computed: {
@@ -160,11 +146,9 @@ export default {
 
     <v-col>
           <v-btn @click="overlay = !overlay" rounded="pill" variant="outlined">Menu
-            <v-overlay v-model="overlay" class="align-center justify-center">
-
-              <v-btn class="btn-info" @click="showInfo()" rounded="pill" variant="outlined">{{showHide}} Info</v-btn> 
-
+            <v-overlay v-model="overlay" class="align-center justify-center" scroll-strategy="reposition">
               <v-card class="rounded-card ovCard" width="600" variant="outlined">
+              <div class="v-card__text my-list"> 
               <v-row>
               <v-col>
                 <v-btn class="btn-hamon" @click="this.increaseHitDamage(0)" rounded="pill" variant="outlined">+ 1 on Damage</v-btn> 
@@ -176,9 +160,11 @@ export default {
                     src="../assets/pics/upgrades/hamon.png"
                     alt="HAMON">
                   </v-img>
-                </v-avatar>
-                <v-spacer></v-spacer>
-                <span v-if="info" class="upgradeText">{{ upgradesPerHit[0].info }}</span>
+                  <v-tooltip
+                  activator="parent">
+                    <span class="upgradeText">{{ upgradesPerHit[0].info }}</span>
+                </v-tooltip>
+                </v-avatar>     
               </v-col>
       
               <v-col>
@@ -191,9 +177,11 @@ export default {
                       src="../assets/pics/upgrades/arrow.png"
                       alt="ARROW">
                     </v-img>
+                    <v-tooltip
+                    activator="parent">
+                      <span class="upgradeText">{{ upgradesPerSecond[0].info }}</span>
+                  </v-tooltip>
                 </v-avatar>
-                <v-spacer></v-spacer>
-                <span v-if="info" class="upgradeText">{{ upgradesPerSecond[0].info }}</span>
               </v-col>
        
               <v-col v-show="deathCount >= 10">
@@ -205,10 +193,12 @@ export default {
                   <v-img 
                     src="../assets/pics/upgrades/iggi.png"
                     alt="TheFool">
+                    <v-tooltip
+                    activator="parent">
+                      <span class="upgradeText">{{ upgradesPerHit[1].info }}</span>
+                  </v-tooltip>
                   </v-img>
                 </v-avatar>
-                <v-spacer></v-spacer>
-                <span v-if="info" class="upgradeText">{{ upgradesPerHit[1].info }}</span>
               </v-col>
       
               <v-col v-show="deathCount >= 20">
@@ -221,9 +211,11 @@ export default {
                     src="../assets/pics/upgrades/star_platinum.png"
                     alt="StarPlatinum">
                   </v-img>
+                  <v-tooltip
+                    activator="parent">
+                      <span class="upgradeText">{{ upgradesPerSecond[1].info }}</span>
+                  </v-tooltip>
                 </v-avatar>
-                <v-spacer></v-spacer>
-                <span v-if="info" class="upgradeText">{{ upgradesPerSecond[1].info }}</span>
               </v-col>
 
               <v-col v-show="deathCount >= 30">
@@ -236,13 +228,15 @@ export default {
                     src="../assets/pics/upgrades/josuke.png"
                     alt="Josuke">
                   </v-img>
+                  <v-tooltip
+                    activator="parent">
+                      <span class="upgradeText">{{ upgradesPerHit[2].info }}</span>
+                  </v-tooltip>
                 </v-avatar>
-                <v-spacer></v-spacer>
-                <span v-if="info" class="upgradeText">{{ upgradesPerHit[2].info }}</span>
               </v-col>
             </v-row>
+          </div>
             </v-card>
-
             </v-overlay>
           </v-btn>
         </v-col>
@@ -251,18 +245,16 @@ export default {
           <span class="pink" >Hit {{ addSize }} HP</span>
         </v-col>
       </v-row>
+      
     </v-card>  
   </v-app>
   </template>
 
 <style>
 
-.btn-info{
-  font-family: SF_Fedora; 
-}
-
 .upgradeText{
   font-size: small;
+  font-family: SF_Fedora; 
 }
 
 .pink{
@@ -310,12 +302,18 @@ body{
   padding-right: 1%;
 }
 
-.v-overlay{
-  overflow-y: visible !important;
+.my-list {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
 }
 
 .v-application.v-theme--light.v-layout.v-layout--full-height.v-locale--is-ltr {
   background: transparent;
 }
+
+html {
+  overflow: hidden !important;
+}
+
 </style>
 

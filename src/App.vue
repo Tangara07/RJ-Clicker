@@ -25,7 +25,7 @@ export default {
 <style>
 
 html { 
-  overflow-y: hidden !important 
+  
 }
 
 body{
