@@ -22,10 +22,13 @@ export default {
       bossList: bossList,
       upgradesPerHit: upgradesPerHit,
       upgradesPerSecond: upgradesPerSecond,
+
+      disabled: false
     };
   },
 
   methods: {
+
     addToScore(){
       this.score += this.addSize;
       this.bossKillClick();
@@ -61,6 +64,12 @@ export default {
 
     bossKillClick(){
       this.bossList[this.index].hp -= this.addSize;
+
+      this.disabled = true
+      setTimeout(() => {
+        this.disabled = false
+      }, 100)
+
       this.switchBossIdx();
     },
 
@@ -133,12 +142,14 @@ export default {
         </v-col>
 
         <v-col>
-          <v-avatar size="250" rounded="0">
+          <div>
+          <v-avatar :class="{ blink: disabled }" size="250" rounded="0">
             <v-img 
               @click="addToScore()"
               v-bind:src="switchBoss">
             </v-img>
           </v-avatar>
+          </div>
         </v-col>
     </v-row>
 
@@ -318,6 +329,16 @@ body{
 
 html {
   overflow: hidden !important;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {opacity: 0}
+    49%{opacity: 0}
+    50% {opacity: 1}
 }
 
 </style>
