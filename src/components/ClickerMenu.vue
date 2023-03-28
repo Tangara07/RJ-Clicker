@@ -8,12 +8,11 @@ export default {
   data(){
     return{
       score: 0,
-      addSize: 1,
+      addSize: 1000,
       perSecond: 0,   
 
       deathCount: 0,
       interval: null,
-      bossCount: 1,
 
       overlay: false,
 
@@ -23,11 +22,24 @@ export default {
       upgradesPerHit: upgradesPerHit,
       upgradesPerSecond: upgradesPerSecond,
 
-      disabled: false
+      disabled: false,
+
+      snackbar: false,
+      text: 'NEW UPGRADE!!!',
+      timeout: 500,
     };
   },
 
   methods: {
+
+    snack(){
+      if ((this.deathCount % 10) == 0){
+        this.snackbar == true;
+      }
+      else{
+        this.snackbar == false;
+      }
+    },
 
     addToScore(){
       this.score += this.addSize;
@@ -68,14 +80,17 @@ export default {
       this.disabled = true
       setTimeout(() => {
         this.disabled = false
-      }, 100)
+      }, 100);    
 
       this.switchBossIdx();
+      this.snack();
+      console.log(this.snackbar);
     },
 
     bossKillTime(){
       this.bossList[this.index].hp -= this.perSecond;
       this.switchBossIdx();
+      this.snack();
     },
 
     switchBossIdx() {
@@ -94,6 +109,7 @@ export default {
         }
      }   
     },
+
   },
 
   computed: {
@@ -255,6 +271,9 @@ export default {
             </v-card>
             </v-overlay>
           </v-btn>
+          <v-snackbar v-model="snackbar" :timeout="timeout">
+            {{ text }}
+          </v-snackbar>
         </v-col>
 
         <v-col>
