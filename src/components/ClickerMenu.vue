@@ -161,7 +161,8 @@ export default {
                     alt="HAMON">
                   </v-img>
                   <v-tooltip
-                  activator="parent">
+                  activator="parent"
+                  max-width="300">
                     <span class="upgradeText">{{ upgradesPerHit[0].info }}</span>
                 </v-tooltip>
                 </v-avatar>     
@@ -178,7 +179,8 @@ export default {
                       alt="ARROW">
                     </v-img>
                     <v-tooltip
-                    activator="parent">
+                    activator="parent"
+                    max-width="300">
                       <span class="upgradeText">{{ upgradesPerSecond[0].info }}</span>
                   </v-tooltip>
                 </v-avatar>
@@ -194,7 +196,8 @@ export default {
                     src="../assets/pics/upgrades/iggi.png"
                     alt="TheFool">
                     <v-tooltip
-                    activator="parent">
+                    activator="parent"
+                    max-width="300">
                       <span class="upgradeText">{{ upgradesPerHit[1].info }}</span>
                   </v-tooltip>
                   </v-img>
@@ -212,7 +215,8 @@ export default {
                     alt="StarPlatinum">
                   </v-img>
                   <v-tooltip
-                    activator="parent">
+                    activator="parent"
+                    max-width="300">
                       <span class="upgradeText">{{ upgradesPerSecond[1].info }}</span>
                   </v-tooltip>
                 </v-avatar>
@@ -229,7 +233,8 @@ export default {
                     alt="Josuke">
                   </v-img>
                   <v-tooltip
-                    activator="parent">
+                    activator="parent"
+                    max-width="300">
                       <span class="upgradeText">{{ upgradesPerHit[2].info }}</span>
                   </v-tooltip>
                 </v-avatar>
@@ -303,7 +308,7 @@ body{
 }
 
 .my-list {
-  height: calc(100vh - 200px);
+  height: calc(70vh - 200px);
   overflow-y: auto;
 }
 
