@@ -8,7 +8,7 @@ export default {
   data(){
     return{
       score: 0,
-      addSize: 1000,
+      addSize: 200,
       perSecond: 0,   
 
       deathCount: 0,
@@ -24,20 +24,21 @@ export default {
 
       disabled: false,
 
+      snackCount: 10,
+
       snackbar: false,
       text: 'NEW UPGRADE!!!',
-      timeout: 500,
+      timeout: 750,
     };
   },
 
   methods: {
 
     snack(){
-      if ((this.deathCount % 10) == 0){
-        this.snackbar == true;
-      }
-      else{
-        this.snackbar == false;
+      
+      if ((this.deathCount % this.snackCount) == 0 && this.deathCount != 0){
+        this.snackbar = true;
+        this.snackCount += 10;
       }
     },
 
@@ -82,14 +83,15 @@ export default {
         this.disabled = false
       }, 100);    
 
-      this.switchBossIdx();
       this.snack();
-      console.log(this.snackbar);
+
+      this.switchBossIdx();
     },
 
     bossKillTime(){
       this.bossList[this.index].hp -= this.perSecond;
       this.switchBossIdx();
+
       this.snack();
     },
 
