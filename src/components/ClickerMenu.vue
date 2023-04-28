@@ -29,6 +29,7 @@ export default {
       snackbar: false,
       text: 'NEW UPGRADE!!!',
       timeout: 1000,
+
     };
   },
 
@@ -45,6 +46,7 @@ export default {
     addToScore(){
       this.score += this.addSize;
       this.bossKillClick();
+      console.log(this.index);
     },
 
     increaseHitDamage(index){
@@ -122,8 +124,32 @@ export default {
     switchBossName() {
       return this.bossList[this.index].name;
     }
+  },
+
+  mounted() {
+    if(localStorage.score) this.score = Number(localStorage.score);
+    if(localStorage.addSize) this.addSize = Number(localStorage.addSize);
+    if(localStorage.perSecond) this.perSecond = Number(localStorage.perSecond);
+    if(localStorage.deathCount) this.deathCount = Number(localStorage.deathCount);
+    if(localStorage.index) this.index = Number(localStorage.index);
+    if(localStorage.getItem("bossList")) this.bossList = JSON.parse(localStorage.getItem('bossList'));
+    if(localStorage.getItem("upgradesPerHit")) this.upgradesPerHit = JSON.parse(localStorage.getItem('upgradesPerHit'));
+    if(localStorage.getItem("upgradesPerSecond")) this.upgradesPerSecond = JSON.parse(localStorage.getItem('upgradesPerSecond'));
+  },
+
+  watch: {
+    score() {
+      localStorage.score= this.score;  
+      localStorage.addSize= this.addSize; 
+      localStorage.perSecond= this.perSecond;    
+      localStorage.deathCount= this.deathCount; 
+      localStorage.index= this.index; 
+      localStorage.setItem('bossList', JSON.stringify(this.bossList));
+      localStorage.setItem('upgradesPerHit', JSON.stringify(this.upgradesPerHit));
+      localStorage.setItem('upgradesPerSecond', JSON.stringify(this.upgradesPerSecond));
+    }
   }
-}
+  }
 
 </script>
 
