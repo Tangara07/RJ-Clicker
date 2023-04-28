@@ -3,7 +3,7 @@
 import bossList from '../assets/vue/bosses.vue'
 import upgradesPerHit from '../assets/vue/upgradesPerHit.vue'
 import upgradesPerSecond from '../assets/vue/upgradesPerSecond.vue'
-//v-show="deathCount >= 10"
+
 export default {
   data(){
     return{
@@ -28,7 +28,7 @@ export default {
 
       snackbar: false,
       text: 'NEW UPGRADE!!!',
-      timeout: 750,
+      timeout: 1000,
     };
   },
 

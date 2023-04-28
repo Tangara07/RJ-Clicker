@@ -109,7 +109,7 @@ export default [
       descr: "Spice Girl: +2500 Damage per Hit",
       path: trish,
       incrCost: 5,
-      info: "Aerosmith is a Stand that is owned by the character Narancia Ghirga and takes the form of a small airplane that can shoot bullets and drop bombs. Its abilities allow it to track targets and provide aerial support in battles."
+      info: "Spice Girl is a Stand that is owned by the character Trish Una and takes the form of a humanoid creature with the ability to soften and weaken any material it touches. Its abilities make it useful for infiltration and sabotage, as well as for defensive purposes in battles."
     },
   ]
 </script>
