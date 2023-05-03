@@ -5,6 +5,7 @@
 ## Clicker game
 #### Kill bosses, get more points, upgrade ur damage. More kills - more upgrades.
 #### Based on Anime and Manga "Jojo's Bizzare Adventure", made by Hiroko Araki
+#### https://rj-clicker.web.app/
 
 ## Code
 #### Main code u can find in src/components/ClickerMenu.vue
