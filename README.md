@@ -10,7 +10,7 @@
 ## Code
 #### Main code u can find in src/components/ClickerMenu.vue
 
-## Text
+## Test
 
 #### https://rj-clicker.web.app/
 
