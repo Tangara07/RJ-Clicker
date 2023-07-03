@@ -10,6 +10,9 @@
 ## Code
 #### Main code u can find in src/components/ClickerMenu.vue
 
+## Text
+
+#### https://rj-clicker.web.app/
 
 ## Install
 
