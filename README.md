@@ -10,10 +10,6 @@
 ## Code
 #### Main code u can find in src/components/ClickerMenu.vue
 
-## Test
-
-#### https://rj-clicker.web.app/
-
 ## Install
 
 #### At First u need to install node, and fter that u should install vue:
