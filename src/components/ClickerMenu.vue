@@ -44,7 +44,6 @@ export default {
     },
 
     addToScore(){
-      this.score += this.addSize;
       this.bossKillClick();
       console.log(this.index);
     },
@@ -72,7 +71,6 @@ export default {
 
     startInterval() {
       this.interval = setInterval(() => {
-        this.score += this.perSecond;
         this.bossKillTime();
       }, 1000)
     },
@@ -135,6 +133,7 @@ export default {
     if(localStorage.getItem("bossList")) this.bossList = JSON.parse(localStorage.getItem('bossList'));
     if(localStorage.getItem("upgradesPerHit")) this.upgradesPerHit = JSON.parse(localStorage.getItem('upgradesPerHit'));
     if(localStorage.getItem("upgradesPerSecond")) this.upgradesPerSecond = JSON.parse(localStorage.getItem('upgradesPerSecond'));
+    this.startInterval();
   },
 
   watch: {
@@ -154,20 +153,21 @@ export default {
 </script>
 
 <template>
+  
   <v-app>
-    <v-card class="rounded-card cardMarg" title="RJ-Clicker!" variant="outlined">
+    <v-card height="100%" class="cardBackground rounded-card justify-center" title="RJ-Clicker!" variant="outlined">
       <v-row>
 
         <v-col>
-          <span>Total Points: {{ score }} </span>
+          <v-card-text class="text-center">Total Points: {{ score }} </v-card-text>
         </v-col>
           
         <v-col>
-          <span class="perSecond">Damage per Second: {{ perSecond}}</span>
+          <v-card-text class="perSecond text-center">Damage per Second: {{ perSecond}}</v-card-text>
         </v-col>
             
         <v-col>
-          <span>Boss killed <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</span>        
+          <v-card-text class="text-center">Boss killed <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</v-card-text>        
         </v-col>
 
       </v-row>
@@ -175,31 +175,21 @@ export default {
       <v-row>
 
         <v-col>
-          <v-spacer></v-spacer>
-          <v-row>
-            <span class="pink">{{switchBossName}}</span>
-          </v-row>
-
-          <v-row>
-            <span class="pink">HP: {{ bossList[this.index].hp }}</span>
-          </v-row>
-        </v-col>
-
-        <v-col>
-          <div>
-          <v-avatar :class="{ blink: disabled }" size="250" rounded="0">
+          <v-card-text class="text-center">
+          <v-avatar :class="{ blink: disabled }" size="400" rounded="0">
             <v-img 
               @click="addToScore()"
               v-bind:src="switchBoss">
             </v-img>
           </v-avatar>
-          </div>
+          </v-card-text>
         </v-col>
     </v-row>
 
     <v-row>
 
     <v-col>
+      <v-card-text class="text-center">
           <v-btn @click="overlay = !overlay" rounded="pill" variant="outlined">Menu
             <v-overlay v-model="overlay" class="align-center justify-center" scroll-strategy="reposition">
               <v-card class="rounded-card ovCard" width="600" variant="outlined">
@@ -600,13 +590,24 @@ export default {
             </v-card>
             </v-overlay>
           </v-btn>
+        </v-card-text>
           <v-snackbar v-model="snackbar" :timeout="timeout">
             {{ text }}
           </v-snackbar>
         </v-col>
 
         <v-col>
-          <span class="pink" >Hit {{ addSize }} HP</span>
+          <v-row>
+            <v-card-text class="text-center pink">{{switchBossName}}</v-card-text>
+          </v-row>
+
+          <v-row>
+            <v-card-text class="text-center pink">HP: {{ bossList[this.index].hp }}</v-card-text>
+          </v-row>
+        </v-col>
+
+        <v-col>
+          <v-card-text class="text-center pink" >Hit {{ addSize }} HP</v-card-text>
         </v-col>
       </v-row>
       
@@ -615,6 +616,13 @@ export default {
   </template>
 
 <style>
+
+.cardBackground{
+  background: url('../assets/pics/manison.jpg')  !important;
+  background-size: cover !important;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+  border-color: #000000;
+}
 
 .upgradeText{
   font-size: small;
@@ -632,15 +640,6 @@ export default {
   text-align: center;
 }
 
-.cardMarg{
-  margin-left: 22%;
-  margin-right: 22%;
-}
-
-.v-col{
-  padding-left: 6%;
-}
-
 .v-row{
   margin-top: 2%;
   margin-bottom: 2%;
@@ -656,8 +655,11 @@ body{
   background-color: #000000;
 }
 
+.v-card-text{
+  font-size: x-large;
+}
+
 .rounded-card{
-    border-radius:50px;
     background-color: #333333;
     color: #ffffff;
 }
@@ -673,6 +675,10 @@ body{
 
 .v-application.v-theme--light.v-layout.v-layout--full-height.v-locale--is-ltr {
   background: transparent;
+}
+
+body{
+  background-color: #333333;
 }
 
 html {
