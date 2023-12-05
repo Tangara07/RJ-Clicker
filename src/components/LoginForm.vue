@@ -3,7 +3,7 @@
     <v-card class="rounded-xl pa-15 mx-auto cardWith text-center" title="Log In!">
         <v-text-field type="email" class="centered-input" placeholder="Email" required v-model="email"> </v-text-field>
         <v-text-field type="password" class="centered-input" placeholder="Password" required v-model="password"> </v-text-field>
-        <v-btn type="submit">Log in</v-btn>
+        <v-btn type="submit">Log in!</v-btn>
     </v-card>
     </form>
   </template>
