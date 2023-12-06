@@ -5,12 +5,12 @@
     <!-- login -->
     <template v-if="showLogin">
       <login-form @loggedIn="isLoggedIn = true"/>
-      <p>No account yet? <span @click="showLogin=false">Sign up</span> instead.</p>
+      <p class="text-center fontColor">No account yet? <span @click="showLogin=false" class="logRegColor">Sign up</span> instead.</p>
     </template>
     <!-- or register -->
     <template v-else>
       <signup-form @loggedIn="isLoggedIn = true"/>
-      <p>Already registered? <span @click="showLogin=true">Login</span> instead.</p>
+      <p class="text-center fontColor">Already registered? <span @click="showLogin=true" class="logRegColor">Login</span> instead.</p>
     </template>
   </div>
   <!-- is logged in -->
@@ -52,6 +52,13 @@ export default {
 
 <style>
 
+.fontColor{
+  color: white;
+}
+
+.logRegColor{
+  color: #EC008C;
+}
 
 
 @font-face {
