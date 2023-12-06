@@ -30,6 +30,7 @@
           // update 'displayName'
           updateProfile(auth.currentUser, {
             displayName: this.username
+            
           })
           .then(() => {
             this.$emit('loggedIn')

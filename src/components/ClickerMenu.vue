@@ -3,7 +3,8 @@
 import bossList from '../assets/vue/bosses.vue'
 import upgradesPerHit from '../assets/vue/upgradesPerHit.vue'
 import upgradesPerSecond from '../assets/vue/upgradesPerSecond.vue'
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, onValue} from "firebase/database";
+import { auth } from '../firebase/init.js'
 
 export default {
   data(){
@@ -115,14 +116,6 @@ export default {
      }   
     },
 
-    writeUserData() {
-      const db = getDatabase();
-      set(ref(db, 'users/' + this.userId), {
-        score: this.score,
-        addSize: this.addSize,
-      });
-}
-
   },
 
   computed: {
@@ -136,30 +129,34 @@ export default {
   },
 
   mounted() {
-    if(localStorage.score) this.score = Number(localStorage.score);
-    if(localStorage.addSize) this.addSize = Number(localStorage.addSize);
-    if(localStorage.perSecond) this.perSecond = Number(localStorage.perSecond);
-    if(localStorage.deathCount) this.deathCount = Number(localStorage.deathCount);
-    if(localStorage.index) this.index = Number(localStorage.index);
-    if(localStorage.getItem("bossList")) this.bossList = JSON.parse(localStorage.getItem('bossList'));
-    if(localStorage.getItem("upgradesPerHit")) this.upgradesPerHit = JSON.parse(localStorage.getItem('upgradesPerHit'));
-    if(localStorage.getItem("upgradesPerSecond")) this.upgradesPerSecond = JSON.parse(localStorage.getItem('upgradesPerSecond'));
+    const db = getDatabase();
+    const starCountRef = ref(db, 'users/' + auth.currentUser.uid);
+    onValue(starCountRef, (snapshot) => {
+      this.score = snapshot.val().score;
+      this.addSize = snapshot.val().addSize;
+      this.perSecond = snapshot.val().perSecond;
+      this.deathCount = snapshot.val().deathCount;
+      this.index = snapshot.val().index;
+      this.bossList = snapshot.val().bossList;
+      this.upgradesPerHit = snapshot.val().upgradesPerHit;
+      this.upgradesPerSecond = snapshot.val().upgradesPerSecond;
+  });
     this.startInterval();
   },
 
   watch: {
     score() {
-
-      
-      
-      localStorage.score= this.score;  
-      localStorage.addSize= this.addSize; 
-      localStorage.perSecond= this.perSecond;    
-      localStorage.deathCount= this.deathCount; 
-      localStorage.index= this.index; 
-      localStorage.setItem('bossList', JSON.stringify(this.bossList));
-      localStorage.setItem('upgradesPerHit', JSON.stringify(this.upgradesPerHit));
-      localStorage.setItem('upgradesPerSecond', JSON.stringify(this.upgradesPerSecond));
+      const db = getDatabase();
+      set(ref(db, 'users/' + auth.currentUser.uid), {
+        score: this.score,
+        addSize: this.addSize,
+        perSecond: this.perSecond,  
+        deathCount: this.deathCount, 
+        index: this.index,
+        bossList: this.bossList,
+        upgradesPerHit: this.upgradesPerHit,
+        upgradesPerSecond: this.upgradesPerSecond,
+      });
     }
   }
   }
@@ -169,7 +166,6 @@ export default {
 <template>
   
   <v-app>
-    <v-btn @click="writeUserData()">Save</v-btn>
     <v-card height="100%" class="cardBackground rounded-card justify-center" title="RJ-Clicker!" variant="outlined">
       <v-row>
 

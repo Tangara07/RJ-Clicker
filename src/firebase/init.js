@@ -9,6 +9,7 @@ const firebaseConfig = {
     storageBucket: "rj-clicker.appspot.com",
     messagingSenderId: "913567152889",
     appId: "1:913567152889:web:2ebe183a0d8b5015acc028",
+    databaseURL: "https://rj-clicker-default-rtdb.europe-west1.firebasedatabase.app",
 }
 
 // init firebase
