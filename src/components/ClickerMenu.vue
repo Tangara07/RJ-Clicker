@@ -3,10 +3,13 @@
 import bossList from '../assets/vue/bosses.vue'
 import upgradesPerHit from '../assets/vue/upgradesPerHit.vue'
 import upgradesPerSecond from '../assets/vue/upgradesPerSecond.vue'
+import { getDatabase, ref, set } from "firebase/database";
 
 export default {
   data(){
     return{
+      userId: 1,
+
       score: 0,
       addSize: 1,
       perSecond: 0,   
@@ -112,6 +115,14 @@ export default {
      }   
     },
 
+    writeUserData() {
+      const db = getDatabase();
+      set(ref(db, 'users/' + this.userId), {
+        score: this.score,
+        addSize: this.addSize,
+      });
+}
+
   },
 
   computed: {
@@ -138,6 +149,9 @@ export default {
 
   watch: {
     score() {
+
+      
+      
       localStorage.score= this.score;  
       localStorage.addSize= this.addSize; 
       localStorage.perSecond= this.perSecond;    
@@ -155,6 +169,7 @@ export default {
 <template>
   
   <v-app>
+    <v-btn @click="writeUserData()">Save</v-btn>
     <v-card height="100%" class="cardBackground rounded-card justify-center" title="RJ-Clicker!" variant="outlined">
       <v-row>
 
