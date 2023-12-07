@@ -1,8 +1,8 @@
 <script>
 
-import bossList from '../assets/vue/bosses.vue'
-import upgradesPerHit from '../assets/vue/upgradesPerHit.vue'
-import upgradesPerSecond from '../assets/vue/upgradesPerSecond.vue'
+import bossListVue from '../assets/vue/bosses.vue'
+import upgradesPerHitVue from '../assets/vue/upgradesPerHit.vue'
+import upgradesPerSecondVue from '../assets/vue/upgradesPerSecond.vue'
 import { getDatabase, ref, set, onValue} from "firebase/database";
 import { auth } from '../firebase/init.js'
 
@@ -13,7 +13,8 @@ export default {
 
       score: 0,
       addSize: 1,
-      perSecond: 0,   
+      perSecond: 0, 
+      multipicator: 0,  
 
       deathCount: 0,
       interval: null,
@@ -22,9 +23,9 @@ export default {
 
       index: 0,  
 
-      bossList: bossList,
-      upgradesPerHit: upgradesPerHit,
-      upgradesPerSecond: upgradesPerSecond,
+      bossList: bossListVue,
+      upgradesPerHit: upgradesPerHitVue,
+      upgradesPerSecond: upgradesPerSecondVue,
 
       disabled: false,
 
@@ -39,127 +40,129 @@ export default {
 
   methods: {
 
-    snack(){
-      
-      if ((this.deathCount % this.snackCount) == 0 && this.deathCount != 0){
-        this.snackbar = true;
-        this.snackCount += 10;
-      }
-    },
-
-    addToScore(){
-      this.bossKillClick();
-      console.log(this.index);
-    },
-
-    increaseHitDamage(index){
-      if(this.score >= this.upgradesPerHit[index].cost){
-        this.score -= this.upgradesPerHit[index].cost;
-        this.addSize += this.upgradesPerHit[index].dmg;
-        this.upgradesPerHit[index].cost = parseInt(this.upgradesPerHit[index].cost * this.upgradesPerHit[index].incrCost);
-      }
-    },
-
-    increasePerSecond(index){
-      if (this.score >= this.upgradesPerSecond[index].cost){
-        clearInterval(this.interval);
-        this.perSecond += this.upgradesPerSecond[index].dmg;
-        this.score -= this.upgradesPerSecond[index].cost;
-        this.upgradesPerSecond[index].cost = parseInt(this.upgradesPerSecond[index].cost * this.upgradesPerSecond[index].incrCost);
+  snack(){
     
-        if (this.perSecond > 0) {
-          this.startInterval();
-        }
+    if ((this.deathCount % this.snackCount) == 0 && this.deathCount != 0){
+      this.snackbar = true;
+      this.snackCount += 10;
+    }
+  },
+
+  addToScore(){
+    this.bossKillClick();
+  },
+
+  increaseHitDamage(index){
+    if(this.score >= this.upgradesPerHit[index].cost){
+      this.score -= this.upgradesPerHit[index].cost;
+      this.addSize += this.upgradesPerHit[index].dmg;
+      this.upgradesPerHit[index].cost = parseInt(this.upgradesPerHit[index].cost * this.upgradesPerHit[index].incrCost);
+    }
+  },
+
+  increasePerSecond(index){
+    if (this.score >= this.upgradesPerSecond[index].cost){
+      clearInterval(this.interval);
+      this.perSecond += this.upgradesPerSecond[index].dmg;
+      this.score -= this.upgradesPerSecond[index].cost;
+      this.upgradesPerSecond[index].cost = parseInt(this.upgradesPerSecond[index].cost * this.upgradesPerSecond[index].incrCost);
+
+      if (this.perSecond > 0) {
+        this.startInterval();
       }
-    },
+    }
+  },
 
-    startInterval() {
-      this.interval = setInterval(() => {
-        this.bossKillTime();
-      }, 1000)
-    },
+  startInterval() {
+    this.interval = setInterval(() => {
+      this.bossKillTime();
+    }, 1000)
+  },
 
-    bossKillClick(){
-      this.bossList[this.index].hp -= this.addSize;
+  bossKillClick(){
+    this.bossList[this.index].hp -= this.addSize;
 
-      this.disabled = true
-      setTimeout(() => {
-        this.disabled = false
-      }, 100);    
+    this.disabled = true
+    setTimeout(() => {
+      this.disabled = false
+    }, 100);    
 
-      this.snack();
+    this.snack();
 
-      this.switchBossIdx();
-    },
+    this.switchBossIdx();
+  },
 
-    bossKillTime(){
-      this.bossList[this.index].hp -= this.perSecond;
-      this.switchBossIdx();
+  bossKillTime(){
+    this.bossList[this.index].hp -= this.perSecond;
+    this.switchBossIdx();
 
-      this.snack();
-    },
+    this.snack();
+  },
 
-    switchBossIdx() {
+  switchBossIdx() {
 
-      if (this.bossList[this.index].hp <= 0){
-        this.deathCount++;
+    if (this.bossList[this.index].hp <= 0){
+      this.deathCount++;
 
-        this.score += this.bossList[this.index].reward;
+      this.score += this.bossList[this.index].reward;
+    }
+
+    if (this.bossList[this.index].hp <= 0){
+      this.index++;
+
+      if (this.index > this.bossList.length - 1){
+        this.bossList = bossListVue;
+        this.index = 0;
       }
-
-      if (this.bossList[this.index].hp <= 0){
-        this.index++;
-
-        if (this.index > this.bossList.length - 1){
-          this.index = 0;
-        }
-     }   
-    },
+  }   
+  },
 
   },
 
   computed: {
-    switchBoss() {
-      return this.bossList[this.index].image;
-    },
+  switchBoss() {
+    return this.bossList[this.index].image;
+  },
 
-    switchBossName() {
-      return this.bossList[this.index].name;
-    }
+  switchBossName() {
+    return this.bossList[this.index].name;
+  }
   },
 
   mounted() {
-    const db = getDatabase();
-    const starCountRef = ref(db, 'users/' + auth.currentUser.uid);
-    onValue(starCountRef, (snapshot) => {
-      this.score = snapshot.val().score;
-      this.addSize = snapshot.val().addSize;
-      this.perSecond = snapshot.val().perSecond;
-      this.deathCount = snapshot.val().deathCount;
-      this.index = snapshot.val().index;
-      this.bossList = snapshot.val().bossList;
-      this.upgradesPerHit = snapshot.val().upgradesPerHit;
-      this.upgradesPerSecond = snapshot.val().upgradesPerSecond;
+  const db = getDatabase();
+  const starCountRef = ref(db, 'users/' + auth.currentUser.uid);
+  onValue(starCountRef, (snapshot) => {
+    this.score = snapshot.val().score;
+    this.addSize = snapshot.val().addSize;
+    this.perSecond = snapshot.val().perSecond;
+    this.deathCount = snapshot.val().deathCount;
+    this.index = snapshot.val().index;
+    this.multipicator = snapshot.val().multipicator;
+    this.bossList = snapshot.val().bossList;
+    this.upgradesPerHit = snapshot.val().upgradesPerHit;
+    this.upgradesPerSecond = snapshot.val().upgradesPerSecond;
   });
-    this.startInterval();
+  this.startInterval();
   },
 
   watch: {
-    score() {
-      const db = getDatabase();
-      set(ref(db, 'users/' + auth.currentUser.uid), {
-        score: this.score,
-        addSize: this.addSize,
-        perSecond: this.perSecond,  
-        deathCount: this.deathCount, 
-        index: this.index,
-        bossList: this.bossList,
-        upgradesPerHit: this.upgradesPerHit,
-        upgradesPerSecond: this.upgradesPerSecond,
-      });
-    }
+  score() {
+    const db = getDatabase();
+    set(ref(db, 'users/' + auth.currentUser.uid), {
+      score: this.score,
+      addSize: this.addSize,
+      perSecond: this.perSecond,  
+      deathCount: this.deathCount, 
+      index: this.index,
+      multipicator: this.multipicator,
+      bossList: this.bossList,
+      upgradesPerHit: this.upgradesPerHit,
+      upgradesPerSecond: this.upgradesPerSecond,
+    });
   }
   }
+}
 
 </script>
 
