@@ -113,6 +113,7 @@ export default {
         this.multipicator += 4
         this.bossList = bossListVue;
         this.bossList.forEach(key => key.hp *= this.multipicator);
+        this.bossList.forEach(key => key.reward *= this.multipicator);
         this.index = 0;
       }
   }   
@@ -127,6 +128,10 @@ export default {
 
   switchBossName() {
     return this.bossList[this.index].name;
+  },
+
+  computedByImage() {
+    return this.bossList[this.index].part;
   }
   },
 
@@ -170,7 +175,7 @@ export default {
 <template>
   
   <v-app>
-    <v-card height="100%" class="cardBackground rounded-card justify-center" title="RJ-Clicker!" variant="outlined">
+    <v-card  height="100%" class="cardBackground rounded-card justify-center" title="RJ-Clicker!" variant="outlined" v-bind:style="{ backgroundImage: 'url(' + computedByImage + ')' }">
       <v-row>
 
         <v-col>
@@ -633,7 +638,6 @@ export default {
 <style>
 
 .cardBackground{
-  background: url('../assets/pics/manison.jpg')  !important;
   background-size: cover !important;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
   border-color: #000000;

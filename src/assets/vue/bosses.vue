@@ -7,6 +7,8 @@ import jack_the_ripper from '../pics/bosses/Part1/jack_the_ripper.png';
 import bruford from '../pics/bosses/Part1/bruford.png';
 import tarkus from '../pics/bosses/Part1/tarkus.png';
 import dio_vampire from '../pics/bosses/Part1/dio_vampire.png';
+//Part 1 Background
+import part1 from '../pics/part1.jpg'
 
 //Part 2
 import straizo from '../pics/bosses/Part2/straizo.png';
@@ -14,6 +16,8 @@ import santana from '../pics/bosses/Part2/santana.png';
 import wammu from '../pics/bosses/Part2/wammu.png';
 import acdc from '../pics/bosses/Part2/acdc.png';
 import kars from '../pics/bosses/Part2/kars.png';
+//Part 2 Background
+import part2 from '../pics/part2.jpg'
 
 //Part 3
 import tower from '../pics/bosses/Part3/tower_of_gray.png';
@@ -29,6 +33,8 @@ import enya_geil from '../pics/bosses/Part3/enya_geil.png';
 import steely_dan from '../pics/bosses/Part3/steely_dan.png';
 import vanilla_ice from '../pics/bosses/Part3/vanilla_ice.png';
 import dio_the_world from '../pics/bosses/Part3/dio_the_world.png';
+//Part 3 Background
+import part3 from '../pics/part3.jpg'
 
 //Part 4
 import akira from '../pics/bosses/Part4/akira.png';
@@ -49,6 +55,8 @@ import masazo from '../pics/bosses/Part4/masazo.png';
 import yuya from '../pics/bosses/Part4/yuya.png';
 import stray_cat from '../pics/bosses/Part4/stray_cat.png';
 import kira_bites_the_dust from '../pics/bosses/Part4/kira_bites_the_dust.png';
+//Part 4 Background
+import part4 from '../pics/part4.jpg'
 
 //Part 5
 import leaky_eye_luca from '../pics/bosses/Part5/leaky_eye_luca.png';
@@ -70,6 +78,8 @@ import secco from '../pics/bosses/Part5/secco.png';
 import ciocolata from '../pics/bosses/Part5/ciocolata.png';
 import chariot_requiem from '../pics/bosses/Part5/chariot_requiem.png';
 import diavolo from '../pics/bosses/Part5/diavolo.png';
+//Part 5 Background
+import part5 from '../pics/part5.jpg'
 
 export default [
     //Part 1
@@ -77,153 +87,178 @@ export default [
       name: "Dio",
       image: dio,
       hp: 100,
-      reward: 300
+      reward: 300,
+      part: part1
     },
     {
       name: "Speedwagon",
       image: speedwagon,
       hp: 150,
-      reward: 300
+      reward: 300,
+      part: part1
     },
     {
       name: "Wang Chan",
       image: wang_chan,
       hp: 200,
-      reward: 300
+      reward: 300,
+      part: part1
     },
     {
       name: "Jack the Ripper",
       image: jack_the_ripper,
       hp: 250,
-      reward: 400
+      reward: 400,
+      part: part1
     },
     {
       name: "Bruford",
       image: bruford,
       hp: 400,
-      reward: 500
+      reward: 500,
+      part: part1
     },
     {
       name: "Tarkus",
       image: tarkus,
       hp: 500,
-      reward: 500
+      reward: 500,
+      part: part1
     },
     {
       name: "Vampire Dio",
       image: dio_vampire,
       hp: 1000,
-      reward: 1000
+      reward: 1000,
+      part: part1
     },
     //Part 2
     {
       name: "Straizo",
       image: straizo,
       hp: 1500,
-      reward: 500
+      reward: 500,
+      part: part2
     },
     {
       name: "Santana",
       image: santana,
       hp: 2000,
-      reward: 500
+      reward: 500,
+      part: part2
     },
     {
       name: "Wammu",
       image: wammu,
       hp: 3000,
-      reward: 750
+      reward: 750,
+      part: part2
     },
     {
       name: "AC/DC",
       image: acdc,
       hp: 4000,
-      reward: 1000
+      reward: 1000,
+      part: part2
     },
     {
       name: "Kars",
       image: kars,
       hp: 7000,
-      reward: 2000
+      reward: 2000,
+      part: part2
     },
     //Part 3
     {
       name: "Tower of Grey",
       image: tower,
       hp: 5000,
-      reward: 1000
+      reward: 1000,
+      part: part3
     },
     {
       name: "Capitan Tennille",
       image: cap_tennille,
       hp: 5500,
-      reward: 1000
+      reward: 1000,
+      part: part3
     },
     {
       name: "Forever",
       image: forever,
       hp: 6000,
-      reward: 1000
+      reward: 1000,
+      part: part3
     },
     {
       name: "Devo the Cursed",
       image: devo_the_cursed,
       hp: 7000,
-      reward: 1500
+      reward: 1500,
+      part: part3
     },
     {
       name: "Rubber Soul",
       image: rubber_soul,
       hp: 7000,
-      reward: 1500
+      reward: 1500,
+      part: part3
     },
     {
       name: "J Geil",
       image: j_geil,
       hp: 10000,
-      reward: 3000
+      reward: 3000,
+      part: part3
     },
     {
       name: "Hol Horse",
       image: hol_horse,
       hp: 7500,
-      reward: 2000
+      reward: 2000,
+      part: part3
     },
     {
       name: "Nena (Empress)",
       image: nena_empress,
       hp: 1000,
-      reward: 1000
+      reward: 1000,
+      part: part3
     },
     {
       name: "ZZ",
       image: zz,
       hp: 2000,
-      reward: 1500
+      reward: 1500,
+      part: part3
     },
     {
       name: "Enya Geil",
       image: enya_geil,
       hp: 8000,
-      reward: 2500
+      reward: 2500,
+      part: part3
     },
     {
       name: "Steely Dan",
       image: steely_dan,
       hp: 5000,
-      reward: 1500
+      reward: 1500,
+      part: part3
     },
     {
       name: "Vanilla Ice",
       image: vanilla_ice,
       hp: 10000,
-      reward: 3000
+      reward: 3000,
+      part: part3
     },
     {
       name: "Dio (The World)",
       image: dio_the_world,
       hp: 30000,
-      reward: 5000
+      reward: 5000,
+      part: part3
     },
 
     //Part 4
@@ -231,109 +266,127 @@ export default [
       name: "Akira Otoishi",
       image: akira,
       hp: 5000,
-      reward: 3000
+      reward: 3000,
+      part: part4
     },
     {
       name: "Okuyasu Nijimura",
       image: okuyasu,
       hp: 6000,
-      reward: 3000
+      reward: 3000,
+      part: part4
     },
     {
       name: "Keicho Nijimura",
       image: keicho,
       hp: 6000,
-      reward: 2500
+      reward: 2500,
+      part: part4
     },
     {
       name: "Anjuro Katagiri",
       image: anjuro,
       hp: 8000,
-      reward: 4000
+      reward: 4000,
+      part: part4
     },
     {
       name: "Yukako Yamagishi",
       image: yukako,
       hp: 5000,
-      reward: 1000
+      reward: 1000,
+      part: part4
     },
     {
       name: "Toshikazu Hazamada",
       image: toshikazu,
       hp: 6000,
-      reward: 2000
+      reward: 2000,
+      part: part4
     },
     {
       name: "Rohan Kishibe",
       image: rohan,
       hp: 15000,
-      reward: 5000
+      reward: 5000,
+      part: part4
     },
     {
       name: "Shigekiyo Yangu",
       image: shigechi,
       hp: 7000,
-      reward: 3000
+      reward: 3000,
+      part: part4
     },
     {
       name: "Kira Yoshikage",
       image: yoshikage_kira,
       hp: 20000,
-      reward: 7500
+      reward: 7500,
+      part: part4
     },
     {
       name: "Ken Oyanagi",
       image: ken,
       hp: 7000,
-      reward: 3000
+      reward: 3000,
+      part: part4
     },
     {
       name: "Aya Tsuji",
       image: aya,
       hp: 1000,
-      reward: 500
+      reward: 500,
+      part: part4
     },
     {
       name: "Kosaku Kawajiri",
       image: kosaku_kawajiri,
       hp: 35000,
-      reward: 10000
+      reward: 10000,
+      part: part4
     },
     {
       name: "Tonio Trussardi",
       image: tonio,
       hp: 1000,
-      reward: 100
+      reward: 100,
+      part: part4
     },
     {
       name: "Rat",
       image: rat,
       hp: 4000,
-      reward: 1500
+      reward: 1500,
+      part: part4
     },
     {
       name: "Masazo Kinoto",
       image: masazo,
       hp: 5000,
-      reward: 2000
+      reward: 2000,
+      part: part4
     },
     {
       name: "Yuya Fungami",
       image: yuya,
       hp: 6000,
-      reward: 2500
+      reward: 2500,
+      part: part4
     },
     {
       name: "Stray Cat",
       image: stray_cat,
       hp: 10000,
-      reward: 5000
+      reward: 5000,
+      part: part4
     },
     {
       name: "Yoshikage Kira (Bites The Dust)",
       image: kira_bites_the_dust,
       hp: 50000,
-      reward: 12000
+      reward: 12000,
+      part: part4
     },
 
     //Part 5
@@ -341,115 +394,134 @@ export default [
       name: "Leaky-Eye Luca",
       image: leaky_eye_luca,
       hp: 10000,
-      reward: 6000
+      reward: 6000,
+      part: part5
     },
     {
       name: "Polpo",
       image: polpo,
       hp: 9000,
-      reward: 5500
+      reward: 5500,
+      part: part5
     },
     {
       name: "Mario Zucchero",
       image: mario_zucchero,
       hp: 11000,
-      reward: 7000
+      reward: 7000,
+      part: part5
     },
     {
       name: "Sale",
       image: sale,
       hp: 13000,
-      reward: 8000
+      reward: 8000,
+      part: part5
     },
     {
       name: "Formaggio",
       image: formaggio,
       hp: 13000,
-      reward: 9000
+      reward: 9000,
+      part: part5
     },
     {
       name: "Illuso",
       image: illuso,
       hp: 14000,
-      reward: 9000
+      reward: 9000,
+      part: part5
     },
     {
       name: "Prosciutto",
       image: prosciutto,
       hp: 15000,
-      reward: 10000
+      reward: 10000,
+      part: part5
     },
     {
       name: "Pesci",
       image: pesci,
       hp: 15000,
-      reward: 10000
+      reward: 10000,
+      part: part5
     },
     {
       name: "Melone",
       image: melone,
       hp: 17000,
-      reward: 12000
+      reward: 12000,
+      part: part5
     },
     {
       name: "Ghiaccio",
       image: ghiaccio,
       hp: 17000,
-      reward: 12000
+      reward: 12000,
+      part: part5
     },
     {
       name: "Risotto Nero",
       image: risotto_nero,
       hp: 20000,
-      reward: 15000
+      reward: 15000,
+      part: part5
     },
     {
       name: "Vinegar Doppio",
       image: vinegar_doppio,
       hp: 50000,
-      reward: 25000
+      reward: 25000,
+      part: part5
     },
     {
       name: "Squalo",
       image: squalo,
       hp: 22000,
-      reward: 17000
+      reward: 17000,
+      part: part5
     },
     {
       name: "Tiziano",
       image: tiziano,
       hp: 22000,
-      reward: 17000
+      reward: 17000,
+      part: part5
     },
     {
       name: "Carne",
       image: carne,
       hp: 25000,
-      reward: 18000
+      reward: 18000,
+      part: part5
     },
     {
       name: "Secco",
       image: secco,
       hp: 40000,
-      reward: 25000
+      reward: 25000,
+      part: part5
     },
     {
       name: "Cioccolata",
       image: ciocolata,
       hp: 50000,
-      reward: 30000
+      reward: 30000,
+      part: part5
     },
     {
       name: "Chariot Requiem",
       image: chariot_requiem,
       hp: 100000,
-      reward: 50000
+      reward: 50000,
+      part: part5
     },
     {
       name: "Diavolo",
       image: diavolo,
       hp: 250000,
-      reward: 100000
+      reward: 100000,
+      part: part5
     }
   ]
 </script>
