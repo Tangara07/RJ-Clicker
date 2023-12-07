@@ -109,9 +109,10 @@ export default {
 
     if (this.bossList[this.index].hp <= 0){
       this.index++;
-
       if (this.index > this.bossList.length - 1){
+        this.multipicator += 4
         this.bossList = bossListVue;
+        this.bossList.forEach(key => key.hp *= this.multipicator);
         this.index = 0;
       }
   }   
