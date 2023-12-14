@@ -110,7 +110,11 @@ export default {
 
     if (this.bossList[this.index].hp <= 0){
       this.index++;
-      this.hpNow = bossListVue[this.index].hp;
+
+      if(this.index < this.bossList.length - 1){
+        this.hpNow = bossListVue[this.index].hp;
+      }
+
       if (this.index > this.bossList.length - 1){
         this.multipicator += 4
         this.bossList = bossListVue;
