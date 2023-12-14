@@ -9,12 +9,12 @@ import { auth } from '../firebase/init.js'
 export default {
   data(){
     return{
-      userId: 1,
-
       score: 0,
       addSize: 1,
       perSecond: 0, 
       multipicator: 0,  
+
+      hpNow: null,
 
       deathCount: 0,
       interval: null,
@@ -99,16 +99,18 @@ export default {
     this.snack();
   },
 
+  
+
   switchBossIdx() {
 
     if (this.bossList[this.index].hp <= 0){
       this.deathCount++;
-
-      this.score += this.bossList[this.index].reward;
+      this.score += this.bossList[this.index].reward; 
     }
 
     if (this.bossList[this.index].hp <= 0){
       this.index++;
+      this.hpNow = bossListVue[this.index].hp;
       if (this.index > this.bossList.length - 1){
         this.multipicator += 4
         this.bossList = bossListVue;
@@ -132,12 +134,17 @@ export default {
 
   computedByImage() {
     return this.bossList[this.index].part;
-  }
   },
 
-  mounted() {
+  countPerCent(){
+    return `${Math.round(100 * (this.bossList[this.index].hp / bossListVue[this.index].hp))}%`;
+  },
+  },
+
+  mounted() { 
   const db = getDatabase();
   const starCountRef = ref(db, 'users/' + auth.currentUser.uid);
+  this.hpNow = bossListVue[this.index].hp;
   onValue(starCountRef, (snapshot) => {
     this.score = snapshot.val().score;
     this.addSize = snapshot.val().addSize;
@@ -190,6 +197,10 @@ export default {
           <v-card-text class="text-center">Boss killed <v-spacer></v-spacer>{{ deathCount }} <v-spacer></v-spacer> times</v-card-text>        
         </v-col>
 
+      </v-row>
+
+      <v-row class="hpBar">
+        <v-progress-linear :max="this.hpNow" rounded color="red" model-value="20" :height="20" v-model="this.bossList[this.index].hp">{{ countPerCent }}</v-progress-linear>
       </v-row>
 
       <v-row>
@@ -620,10 +631,6 @@ export default {
           <v-row>
             <v-card-text class="text-center pink">{{switchBossName}}</v-card-text>
           </v-row>
-
-          <v-row>
-            <v-card-text class="text-center pink">HP: {{ bossList[this.index].hp }}</v-card-text>
-          </v-row>
         </v-col>
 
         <v-col>
@@ -636,6 +643,16 @@ export default {
   </template>
 
 <style>
+
+.hpBar{
+  padding-left: 22%;
+  padding-right: 22%;
+}
+
+.v-progress-linear{
+  transition: width .75s ease;
+  
+}
 
 .cardBackground{
   background-size: cover !important;
